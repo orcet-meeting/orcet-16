@@ -1,0 +1,172 @@
+/* ベースの設定 */
+:root {
+    --primary-color: #0056b3; /* 学会らしい信頼感のあるブルー */
+    --accent-color: #e67e22;  /* ボタン用のアクセントカラー */
+    --text-color: #333333;
+    --bg-color: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ヘッダー・ナビゲーション */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo-area a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* 参加登録ボタン（目立たせる） */
+.btn-register {
+    background-color: var(--accent-color);
+    color: #ffffff !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+.btn-register:hover {
+    background-color: #d35400;
+}
+
+/* ファーストビュー (Hero) */
+.hero {
+    background-color: var(--bg-color);
+    text-align: center;
+    padding: 80px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.hero .date-location {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.main-logo {
+    max-width: 300px;
+    margin-top: 30px;
+}
+
+/* 開催概要テーブル */
+.overview h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.info-table dl {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 2px solid var(--primary-color);
+}
+
+.info-table dt {
+    width: 20%;
+    padding: 15px;
+    background-color: var(--bg-color);
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-table dd {
+    width: 80%;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* フッター */
+footer {
+    background-color: var(--text-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #cccccc;
+}
+
+/* スマホ対応 (レスポンシブ) */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .info-table dt, .info-table dd {
+        width: 100%;
+    }
+}

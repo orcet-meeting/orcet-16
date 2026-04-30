@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>参加者案内 | 第16回 手術室臨床工学技士 OR-CET情報交換会</title>
+    
+    <!-- フォントとアイコン -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- 共通ヘッダー -->
+    <!-- 共通ヘッダー（最新版） -->
     <header>
         <div class="header-container">
             <div class="logo-area">
@@ -33,19 +37,73 @@
         </div>
     </header>
 
+    <!-- 復元したメインコンテンツ -->
     <main class="container">
-        <h2 class="section-title">参加者案内</h2>
-        
-        <!-- 準備中コンテンツ -->
-        <div class="coming-soon">
-            <i class="fas fa-tools" style="font-size: 3rem; color: #ccc; margin-bottom: 20px;"></i>
-            <h3>現在準備中です</h3>
-            <p style="color: #666; margin-top: 10px;">コンテンツの公開まで今しばらくお待ちください。</p>
-        </div>
+        <h2 class="section-title">参加者へのご案内とお願い</h2>
 
+        <section class="guide-section">
+            <h3><i class="fas fa-calendar-alt"></i> 会期・会場（現地開催）</h3>
+            <div class="guide-content">
+                <p><strong>会期：</strong>2027年2月14日（日）</p>
+                <p><strong>会場：</strong>松阪市産業振興センター</p>
+                <p class="address">〒515-0081 三重県松阪市本町2176（松阪駅より徒歩約10分）</p>
+                <div class="map-link">
+                    <a href="https://map.yahoo.co.jp/v3/place/phtFdogxfOE" target="_blank" class="btn-sub"><i class="fas fa-map-marker-alt"></i> Yahoo!マップで確認</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h3><i class="fas fa-ticket-alt"></i> 参加登録・受付</h3>
+            <div class="notice-box urgent">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>現地会場での参加費支払い窓口はございません。</strong></p>
+                <p>本学会の参加には、<strong>Peatixでのオンライン参加登録</strong>が必須となります。必ず事前に手続きを行った上で会場へお越しください。</p>
+            </div>
+            <div class="guide-content">
+                <h4>当日の受付について</h4>
+                <p>Peatixの<strong>QRコード電子チケット</strong>をご準備ください。アプリまたはスマートフォンのブラウザ画面を提示してください。※印刷持参も可能です。</p>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h3><i class="fas fa-certificate"></i> 単位取得について（予定）</h3>
+            <div class="guide-content">
+                <table class="unit-table">
+                    <tr><th>専門手術臨床工学技士</th><td>3単位</td></tr>
+                    <tr><th>認定手術臨床工学技士</th><td>3単位</td></tr>
+                    <tr><th>認定医療機器管理臨床工学技士</th><td>3単位</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h3><i class="fas fa-info-circle"></i> 施設案内</h3>
+            <div class="guide-content">
+                <h4>クローク</h4>
+                <p>クロークはございません。周辺の有料施設をご利用ください。</p>
+                <div class="external-links">
+                    <a href="https://www.matsusaka-kanko.com/service-baggage-room/" target="_blank">松阪市観光協会 手荷物預かり <i class="fas fa-external-link-alt"></i></a><br>
+                    <a href="https://cloak.ecbo.io/ja/jpn/city/mie/1122" target="_blank">ecbo cloak（松阪駅周辺） <i class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <h4 class="mt-20" style="margin-top: 20px;">駐車場</h4>
+                <p>約45台の無料駐車場がありますが、数に限りがございます。満車の場合は市役所または近隣有料駐車場をご利用ください。</p>
+                <a href="https://www.city.matsusaka.mie.jp/site/kanko/parkingaccess.html" target="_blank" class="btn-sub"><i class="fas fa-parking"></i> 駐車場一覧</a>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h3><i class="fas fa-user-shield"></i> 会場内でのお願い</h3>
+            <div class="notice-box danger">
+                <ul class="note-list">
+                    <li>会場内での<strong>写真・ビデオ撮影、録音は固くお断りいたします。</strong></li>
+                    <li>オンデマンド配信動画やスライド等の二次利用、キャプチャー行為は一切禁止です。</li>
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <!-- 共通フッター -->
+    <!-- 共通フッター（最新版） -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-info">
@@ -69,6 +127,7 @@
         </div>
     </footer>
 
+    <!-- トップに戻るボタン & JS -->
     <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
     <script src="js/main.js"></script>
 

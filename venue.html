@@ -9,10 +9,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- ページ内リンク用の専用スタイル -->
+    <style>
+        /* スムーススクロール（滑らかに移動する設定） */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* 固定ヘッダーにタイトルが隠れないようにする余白調整 */
+        .guide-section {
+            scroll-margin-top: 90px; 
+        }
+        /* 目次メニューのデザイン */
+        .page-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        .page-menu a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: #fff;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .page-menu a i {
+            margin-right: 8px;
+        }
+        .page-menu a:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .page-menu a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 共通ヘッダー -->
     <header>
         <div class="header-container">
             <div class="logo-area">
@@ -36,8 +83,17 @@
     <main class="container">
         <h2 class="section-title">会場・周辺案内</h2>
 
-        <!-- 会場アクセス -->
-        <section class="guide-section">
+        <!-- 目次メニュー -->
+        <div class="page-menu">
+            <a href="#access"><i class="fas fa-map-marked-alt"></i> 会場アクセス</a>
+            <a href="#facility"><i class="fas fa-building"></i> 施設・駐車場</a>
+            <a href="#ise-shima"><i class="fas fa-suitcase-rolling"></i> 伊勢・志摩アクセス</a>
+            <a href="#gourmet"><i class="fas fa-utensils"></i> おすすめグルメ</a>
+            <a href="#sightseeing"><i class="fas fa-camera-retro"></i> 観光スポット</a>
+        </div>
+
+        <!-- ① 会場アクセス -->
+        <section id="access" class="guide-section">
             <h3><i class="fas fa-map-marked-alt"></i> 会場アクセス</h3>
             <div class="guide-content">
                 <h4>松阪市産業振興センター</h4>
@@ -46,10 +102,6 @@
                     <li>JR・近鉄「松阪駅」JR側出口（南口）より徒歩約10分</li>
                     <li>伊勢自動車道「松阪IC」より車で約15分</li>
                 </ul>
-                <div class="notice-box urgent">
-                    <p><i class="fas fa-parking"></i> <strong>駐車場について</strong></p>
-                    <p>無料駐車場（約45台）がございますが、満車になる可能性が高いため、公共交通機関のご利用や近隣の有料駐車場、または松阪市役所の駐車場のご利用をお願いいたします。</p>
-                </div>
                 
                 <!-- Google Map埋め込み -->
                 <div style="margin: 25px 0 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
@@ -62,8 +114,33 @@
             </div>
         </section>
 
-        <!-- 前乗り推奨セクション -->
-        <section class="guide-section">
+        <!-- ② 施設・駐車場 -->
+        <section id="facility" class="guide-section">
+            <h3><i class="fas fa-building"></i> 施設・駐車場案内</h3>
+            <div class="guide-content">
+                
+                <h4>駐車場について</h4>
+                <div class="notice-box urgent" style="margin-top: 10px;">
+                    <p><i class="fas fa-parking"></i> 無料駐車場（約45台）がございますが、満車になる可能性が高いため、公共交通機関のご利用や近隣の有料駐車場、または松阪市役所の駐車場のご利用をお願いいたします。</p>
+                </div>
+                
+                <!-- 駐車場マイマップ -->
+                <div style="margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=14hZgr73HUgb7Ri54JpBiaSxR9EIMlEaa&ehbc=2E312F" width="100%" height="450" style="border:0; display: block;"></iframe>
+                </div>
+                <a href="https://www.city.matsusaka.mie.jp/site/kanko/parkingaccess.html" target="_blank" class="btn-sub"><i class="fas fa-parking"></i> 駐車場一覧を見る</a>
+
+                <h4 style="margin-top: 40px;">クローク（荷物預かり）</h4>
+                <p>会場内にクロークはございません。周辺の有料施設をご利用ください。</p>
+                <div class="external-links" style="margin-top: 10px;">
+                    <a href="https://www.matsusaka-kanko.com/service-baggage-room/" target="_blank" style="display: block; margin-bottom: 5px;"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 手荷物預かり</a>
+                    <a href="https://cloak.ecbo.io/ja/jpn/city/mie/1122" target="_blank" style="display: block;"><i class="fas fa-external-link-alt"></i> ecbo cloak（松阪駅周辺）</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ③ 前乗り推奨 -->
+        <section id="ise-shima" class="guide-section">
             <h3><i class="fas fa-suitcase-rolling"></i> 前乗り推奨！伊勢・志摩エリアへも好アクセス</h3>
             <div class="notice-box" style="background-color: #e6f7ff; border: 2px solid #91d5ff;">
                 <p style="font-weight: bold; color: #0050b3; font-size: 1.1rem; margin-bottom: 15px;">
@@ -74,7 +151,6 @@
                     近鉄やJRを利用すれば、<strong>伊勢神宮や鳥羽・志摩エリアへ乗り換えなしでアクセス可能！</strong><br>
                     松阪を拠点（ベースキャンプ）にして、前日入りでの観光をぜひご検討ください。
                 </p>
-                
                 <ul class="dot-list" style="line-height: 1.8;">
                     <li><strong>⛩️ 伊勢エリア（伊勢神宮・おかげ横丁）</strong><br>
                         【近鉄】特急：約15分 ／ 急行：約20分<br>
@@ -94,8 +170,8 @@
             </div>
         </section>
 
-        <!-- 周辺グルメ情報 -->
-        <section class="guide-section">
+        <!-- ④ グルメ -->
+        <section id="gourmet" class="guide-section">
             <h3><i class="fas fa-utensils"></i> おすすめ松阪グルメ</h3>
             <div class="guide-content">
                 <p style="margin-bottom: 20px;">学会の合間や懇親の場として、松阪市ならではの食をお楽しみください。</p>
@@ -119,13 +195,11 @@
                 <p>帰りの電車のお供におすすめ！<br>
                 フタを開けると「ふるさと」のメロディが流れる、インパクト抜群の牛型容器に入ったすき焼き弁当です。<br>
                 松阪駅の駅弁売店「あら竹」で購入できます。</p>
-
-                <a href="https://www.matsusaka-kanko.com/" target="_blank" class="btn-sub"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 公式サイトで探す</a>
             </div>
         </section>
 
-        <!-- 観光スポット（充実版） -->
-        <section class="guide-section">
+        <!-- ⑤ 観光スポット -->
+        <section id="sightseeing" class="guide-section">
             <h3><i class="fas fa-camera-retro"></i> 松阪・周辺エリアの観光スポット</h3>
             <div class="guide-content">
                 <p style="margin-bottom: 20px;">会場のある松阪市中心部は、商都「豪商のまち」として栄えた歴史あるエリアです。<br>
@@ -159,13 +233,14 @@
                 <p>「松阪嶋（まつさかじま）」と呼ばれる粋な藍色の縞模様が特徴の伝統工芸「松阪もめん」。<br>
                 江戸の庶民を熱狂させ、歌舞伎役者も愛用したと言われるこの織物の機織り体験（要予約）や、お土産にぴったりの小物・反物の購入が可能です。</p>
 
-                <a href="https://www.matsusaka-kanko.com/" target="_blank" class="btn-sub"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 公式サイトを見る</a>
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="https://www.matsusaka-kanko.com/" target="_blank" class="btn-sub" style="padding: 12px 30px; font-size: 1rem;"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 公式サイトを見る</a>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- 共通フッター -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-info">
@@ -189,7 +264,6 @@
         </div>
     </footer>
 
-    <!-- トップに戻るボタン & JS -->
     <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
     <script src="js/main.js"></script>
 

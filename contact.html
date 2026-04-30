@@ -5,271 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせ | 第16回 手術室臨床工学技士 OR-CET情報交換会</title>
     
+    <!-- フォントとアイコン -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            var(--primary-color): #004a99;
-            --primary-color: #004a99;
-            --primary-hover: #003366;
-            --accent-color: #e74c3c; 
-            --bg-color: #f4f7f9;
-            --text-color: #333;
-            --border-color: #ccc;
-        }
-
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 40px 20px;
-            line-height: 1.6;
-        }
-
-        .main-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--primary-color);
-        }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-
-        .event-title {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            margin: 0 0 10px 0;
-            letter-spacing: 0.05em;
-        }
-
-        .page-title {
-            font-size: 2rem;
-            margin: 0;
-            color: #333;
-            font-weight: 700;
-        }
-
-        .lead-text {
-            font-size: 0.95rem;
-            color: #666;
-            margin: 15px 0 0 0;
-        }
-
-        /* 追記：注意書き用のスタイル */
-        .notice-text {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin-top: 10px;
-            font-weight: 500;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: #444;
-            font-size: 0.95rem;
-        }
-
-        .required-tag {
-            color: #fff;
-            background-color: var(--accent-color);
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background-color: #fff;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 74, 153, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            height: 180px;
-            line-height: 1.5;
-        }
-
-        .submit-btn-wrapper {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .submit-btn {
-            display: inline-block;
-            padding: 15px 50px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .submit-btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .submit-btn:active {
-            transform: translateY(1px);
-        }
-
-        .submit-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 20px 10px;
-            }
-            .main-container {
-                padding: 30px 20px;
-            }
-            .page-title {
-                font-size: 1.6rem;
-            }
-            .submit-btn {
-                width: 100%;
-                padding: 15px;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="background-color: #f8f9fa;"> <!-- フォームが映える薄いグレー背景 -->
 
-<div class="main-container">
-    <header class="form-header">
-        <p class="event-title">第16回 手術室臨床工学技士 OR-CET情報交換会</p>
-        <h1 class="page-title">お問い合わせフォーム</h1>
-        <p class="lead-text">
-            本会に関するご質問、参加申し込みに関するお問い合わせは、<br>
-            以下のフォームより必要事項を入力の上、送信してください。
-        </p>
-        <p class="notice-text">
-            ※お問い合わせ内容により、ご返信までにお時間をいただく場合がございます。あらかじめご了承ください。
-        </p>
+    <!-- 共通ヘッダー -->
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <a href="index.html">第16回 手術室臨床工学技士 OR-CET情報交換会</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">開催概要</a></li>
+                    <li><a href="greeting.html">ご挨拶</a></li>
+                    <li><a href="sankasya-annai.html">参加者案内</a></li>
+                    <li><a href="program.html">プログラム</a></li>
+                    <li><a href="guidelines.html">座長・発表者へ</a></li>
+                    <li><a href="abstract-submission.html">演題登録</a></li>
+                    <li><a href="venue.html">会場・周辺</a></li>
+                    <li><a href="registration.html" class="btn-register">参加登録</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <form id="contactForm">
+    <main class="container" style="padding-top: 60px; padding-bottom: 80px;">
         
-        <div class="form-group">
-            <label class="form-label" for="name">
-                お名前（氏名）<span class="required-tag">必須</span>
-            </label>
-            <input type="text" id="name" name="name" placeholder="例：長井 太郎" required>
+        <div class="contact-container">
+            <!-- いただいたフォームヘッダー部分 -->
+            <div class="form-header">
+                <p class="event-title">第16回 手術室臨床工学技士 OR-CET情報交換会</p>
+                <h1 class="page-title">お問い合わせフォーム</h1>
+                <p class="lead-text">
+                    本会に関するご質問、参加申し込みに関するお問い合わせは、<br>
+                    以下のフォームより必要事項を入力の上、送信してください。
+                </p>
+                <p class="notice-text">
+                    ※お問い合わせ内容により、ご返信までにお時間をいただく場合がございます。あらかじめご了承ください。
+                </p>
+            </div>
+
+            <!-- いただいたフォーム項目（一切変更なし） -->
+            <form id="contactForm">
+                
+                <div class="form-group">
+                    <label class="form-label" for="name">
+                        お名前（氏名）<span class="required-tag">必須</span>
+                    </label>
+                    <input type="text" id="name" name="name" placeholder="例：長井 太郎" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="facility">
+                        所属施設名<span class="required-tag">必須</span>
+                    </label>
+                    <input type="text" id="facility" name="facility" placeholder="例：〇〇病院 臨床工学部" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">
+                        メールアドレス<span class="required-tag">必須</span>
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="例：taro.nagai@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="subject">
+                        件名<span class="required-tag">必須</span>
+                    </label>
+                    <input type="text" id="subject" name="subject" placeholder="例：参加申し込みについて、演題募集について" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">
+                        お問い合わせ内容<span class="required-tag">必須</span>
+                    </label>
+                    <textarea id="message" name="message" placeholder="具体的なお問い合わせ内容をご記入ください。" required></textarea>
+                </div>
+
+                <div class="submit-btn-wrapper">
+                    <button type="submit" id="submitBtn" class="submit-btn">
+                        <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> 上記の内容で送信する
+                    </button>
+                </div>
+
+            </form>
         </div>
+    </main>
 
-        <div class="form-group">
-            <label class="form-label" for="facility">
-                所属施設名<span class="required-tag">必須</span>
-            </label>
-            <input type="text" id="facility" name="facility" placeholder="例：〇〇病院 臨床工学部" required>
+    <!-- 共通フッター -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
+                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>                
+                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室</p>
+                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科</p>
+                <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>
+            </div>
+            <div class="footer-links">
+                <div class="sns-icons">
+                    <a href="https://line.me/R/ti/p/@359yfnlu" target="_blank" class="sns-icon line" title="LINE"><i class="fab fa-line"></i></a>
+                    <a href="https://www.instagram.com/orcet_jyouhou?igsh=NG1iZGs3eHVpaXp5" target="_blank" class="sns-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1Dc1HNvj1V/?mibextid=wwXIfr" target="_blank" class="sns-icon fb-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <a href="links.html" class="related-link">関連リンク</a>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label class="form-label" for="email">
-                メールアドレス<span class="required-tag">必須</span>
-            </label>
-            <input type="email" id="email" name="email" placeholder="例：taro.nagai@example.com" required>
+        <div class="footer-copyright">
+            <small>Copyright &copy; 2027 The 16th OR-CET Information Exchange Meeting. All Rights Reserved.</small>
         </div>
+    </footer>
 
-        <div class="form-group">
-            <label class="form-label" for="subject">
-                件名<span class="required-tag">必須</span>
-            </label>
-            <input type="text" id="subject" name="subject" placeholder="例：参加申し込みについて、演題募集について" required>
-        </div>
+    <!-- いただいたGAS送信用スクリプト（一切変更なし） -->
+    <script>
+        /* 【超重要】ここにGASのURLを貼り付けてください */
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzt5G-XMfjSHXh76N3i-akuQUyBoxvooRxO5zc6nObBXmnlCzRnwhaF6ZJZYOnJqnmv/exec';
 
-        <div class="form-group">
-            <label class="form-label" for="message">
-                お問い合わせ内容<span class="required-tag">必須</span>
-            </label>
-            <textarea id="message" name="message" placeholder="具体的なお問い合わせ内容をご記入ください。" required></textarea>
-        </div>
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('submitBtn');
 
-        <div class="submit-btn-wrapper">
-            <button type="submit" id="submitBtn" class="submit-btn">
-                上記の内容で送信する
-            </button>
-        </div>
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            btn.disabled = true;
+            btn.innerText = '送信中...';
 
-    </form>
-</div>
-
-<script>
-    /* 【超重要】ここにGASのURLを貼り付けてください */
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzt5G-XMfjSHXh76N3i-akuQUyBoxvooRxO5zc6nObBXmnlCzRnwhaF6ZJZYOnJqnmv/exec';
-
-    const form = document.getElementById('contactForm');
-    const btn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); 
-        
-        btn.disabled = true;
-        btn.innerText = '送信中...';
-
-        const formData = new FormData(this);
-        
-        fetch(scriptUrl, {
-            method: 'POST',
-            body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-            // アラート内にも返信に時間がかかる旨を追記
-            alert('お問い合わせありがとうございます。\n送信が完了しました。\n\n追って担当者よりご連絡させていただきますが、\nご返信までにお時間をいただく場合がございます。\n何卒ご了承ください。');
-            form.reset(); 
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('申し訳ありません。\nシステムエラーにより送信に失敗しました。\n\nお手数ですが、時間をおいて再度お試しいただくか、\n事務局まで直接お電話にてお問い合わせください。');
-        })
-        .finally(() => {
-            btn.disabled = false;
-            btn.innerText = '上記の内容で送信する';
+            const formData = new FormData(this);
+            
+            fetch(scriptUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                // アラート内にも返信に時間がかかる旨を追記
+                alert('お問い合わせありがとうございます。\n送信が完了しました。\n\n追って担当者よりご連絡させていただきますが、\nご返信までにお時間をいただく場合がございます。\n何卒ご了承ください。');
+                form.reset(); 
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('申し訳ありません。\nシステムエラーにより送信に失敗しました。\n\nお手数ですが、時間をおいて再度お試しいただくか、\n事務局まで直接お電話にてお問い合わせください。');
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerText = '上記の内容で送信する';
+            });
         });
-    });
-</script>
+    </script>
+    
+    <!-- トップに戻るボタン用JS -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>

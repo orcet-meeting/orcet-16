@@ -4,15 +4,216 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ご挨拶 | 第16回 手術室臨床工学技士 OR-CET情報交換会</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* 挨拶ページ専用の拡張デザイン */
+        :root {
+            --primary-light: #eef4fb;
+            --accent-warm: #fdf6ee;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        /* ヒーローセクション */
+        .greeting-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #003a7d 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .greeting-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.05em;
+        }
+
+        /* アンカーナビゲーション */
+        .anchor-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .anchor-nav a {
+            background: #fff;
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border: 1px solid #eee;
+            text-decoration: none;
+        }
+
+        .anchor-nav a:hover {
+            transform: translateY(-5px);
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+        /* 挨拶ブロック */
+        .greeting-block {
+            padding: 100px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .greeting-block:nth-child(even) {
+            background-color: var(--primary-light);
+        }
+
+        .greeting-flex {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .greeting-block:nth-child(even) .greeting-flex {
+            flex-direction: row-reverse;
+        }
+
+        .profile-area {
+            flex: 0 0 300px;
+            text-align: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        .profile-image-wrapper {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 25px;
+            border: 8px solid #fff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            background-color: #f0f0f0; /* 写真がない場合の背景色 */
+        }
+
+        .profile-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name-tag {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .profile-role {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .profile-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .profile-inst {
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .message-area {
+            flex: 1;
+        }
+
+        .message-area h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-left: 6px solid var(--accent-color);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .message-area h4 {
+            font-size: 1.2rem;
+            color: #334155;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .message-area h4::before {
+            content: "■";
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+
+        .message-text {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .message-text p {
+            margin-bottom: 25px;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 992px) {
+            .greeting-flex, .greeting-block:nth-child(even) .greeting-flex {
+                flex-direction: column !important;
+                align-items: center;
+            }
+            .profile-area {
+                flex: none;
+                position: static;
+                margin-bottom: 40px;
+            }
+            .message-area h3 {
+                font-size: 1.4rem;
+            }
+            .anchor-nav {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .anchor-nav a {
+                text-align: center;
+            }
+        }
+        
+        /* スムーススクロール用 */
+        html { scroll-behavior: smooth; }
+        .greeting-block { scroll-margin-top: 80px; }
+    </style>
 </head>
 <body>
 
-    <!-- 共通ヘッダー -->
     <header>
         <div class="header-container">
             <div class="logo-area">
@@ -33,19 +234,90 @@
         </div>
     </header>
 
-    <main class="container">
-        <h2 class="section-title">ご挨拶</h2>
-        
-        <!-- 準備中コンテンツ -->
-        <div class="coming-soon">
-            <i class="fas fa-tools" style="font-size: 3rem; color: #ccc; margin-bottom: 20px;"></i>
-            <h3>現在準備中です</h3>
-            <p style="color: #666; margin-top: 10px;">コンテンツの公開まで今しばらくお待ちください。</p>
+    <main>
+        <section class="greeting-hero">
+            <div class="container">
+                <h1>第16回 手術室臨床工学技士(OR-CET)情報交換会<br>開催にあたって</h1>
+            </div>
+        </section>
+
+        <div class="anchor-nav">
+            <a href="#presiding"><i class="fas fa-user-edit"></i> 当番幹事挨拶</a>
+            <a href="#secretariat"><i class="fas fa-university"></i> 事務局代表挨拶</a>
         </div>
 
+        <section id="presiding" class="greeting-block">
+            <div class="greeting-flex">
+                <div class="profile-area">
+                    <div class="profile-image-wrapper">
+                        <img src="images/yamaguchi.jpg" alt="山口 翔 様の写真">
+                    </div>
+                    <div class="profile-name-tag">
+                        <p class="profile-role">第16回 当番幹事</p>
+                        <p class="profile-name">山口 翔</p>
+                        <p class="profile-inst">医療法人 永井病院 臨床工学室</p>
+                    </div>
+                </div>
+                <div class="message-area">
+                    <h3>三重の地から「手術室の未来」を繋ぐ</h3>
+                    <div class="message-text">
+                        <p>皆様、こんにちは。第16回手術室臨床工学技士情報交換会（OR-CET）の当番幹事を務めさせていただきます、医療法人 永井病院の山口翔です。</p>
+                        <p>この度、本会を三重県松阪市にて開催させていただく運びとなりました。ここで「あれ？ 第16回は東京都での開催ではなかったか？」と首を傾げた方もいらっしゃることでしょう。無理もありません。前回、愛知県で開催された折には「次回は東京都にて、杏林大学医学部附属病院の野澤氏が当番幹事を……」と大々的に発表いたしました。</p>
+                        <p>しかし、野澤氏は2027年5月開催の「第37回日本臨床工学会」実行委員として、現在まさに多忙の極みにあります。そこで今回、急遽バトンを受け取り、私、山口がここ松阪の地で皆様をお迎えすることとなりました。野澤ファンの皆様、どうぞご安心（？）ください。</p>
+
+                        <h4>「当たり前」になった今、私たちが直視すべきこと</h4>
+                        <p>さて、私たちの働く環境に目を向けると、手術室に従事する臨床工学技士の役割は驚くほどのスピードで多様化しています。2027年3月には告示研修のコア期間が一旦の区切りを迎え、手術室に臨床工学技士がいる光景は、もはや「珍しいもの」から「医療のスタンダード」へと変化しました。</p>
+                        <p>しかし、その一方で私たちは深刻な現実に直面しています。加速する人口減少、そして医療従事者の不足。私が身を置く三重県においても、手術室における技士の充足は未だ途上であり、地域によっては深刻な医師不足も叫ばれています。</p>
+
+                        <h4>地域医療の要として、そして「未来の患者」としての視点</h4>
+                        <p>こうした状況下で、私たちが果たすべき使命は明確です。それは、いかなる時も「安心・安全」を持って手術を完遂できる体制を維持すること。そして、タスク・シフト／シェアを強力に推進し、医師の負担を軽減しながらも、提供する医療の質をこれまで以上に高めていくことです。</p>
+                        <p>ふと立ち止まって考えることがあります。「自分たちが数十年後に老後を迎えたとき、安心して手術を受けられる世の中なのだろうか？」と。</p>
+                        <p>今、私たちが手術室というフィールドで、職種や地域の垣根を越えて知恵を絞り、臨床工学技士として連携を深めること。それこそが、未来の医療を支える強固な「架け橋」になると確信しています。</p>
+
+                        <h4>松阪で語り合いましょう</h4>
+                        <p>今回のOR-CETでは、日々の業務に直結する知見の共有はもちろん、これからの時代を生き抜く「手術室臨床工学技士の在り方」について、皆様と熱く語り合いたいと考えています。</p>
+                        <p>三重県松阪市は、歴史ある街並みと美味しい食事（松阪牛もお忘れなく！）が自慢の場所です。皆様と共に、有意義な時間を過ごせることを心より楽しみにしております。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="secretariat" class="greeting-block">
+            <div class="greeting-flex">
+                <div class="profile-area">
+                    <div class="profile-image-wrapper">
+                        <img src="images/fujita.jpg" alt="藤田 智一 様の写真">
+                    </div>
+                    <div class="profile-name-tag">
+                        <p class="profile-role">事務局 代表幹事</p>
+                        <p class="profile-name">藤田 智一</p>
+                        <p class="profile-inst">医療法人豊田会 刈谷豊田総合病院 臨床工学科</p>
+                    </div>
+                </div>
+                <div class="message-area">
+                    <div class="message-text">
+                        <p>このたび、第16回OR-CET情報交換会を開催するにあたり、本会事務局を代表し、謹んでごあいさつ申し上げます。</p>
+
+                        <h4>本会の歩みと目的</h4>
+                        <p>本会は、2010年に第1回を開催して以来、手術室における臨床工学技士業務の情報交換と相互研鑽の場として、多くの皆様のご支援とご協力のもと、着実に歩みを重ねてまいりました。会則に掲げるとおり、本会は、臨床工学技士の手術室業務に関する情報交換、運営およびその普及を通じて、医療技術の進歩発展ならびに学術文化の向上に寄与することを目的としております。</p>
+
+                        <h4>これまでの活動と皆様への感謝</h4>
+                        <p>これまで本会は、東海地区を中心に、近畿、中国・四国地区、さらにはWeb開催を含め、時代や地域の状況に応じながら継続してまいりました。各回において、多くの演題発表と活発な意見交換が行われてきたことは、本会の大きな財産であり、ひとえに参加者の皆様、歴代世話人の皆様、ならびに関係各位のご尽力の賜物と深く感謝申し上げます。</p>
+
+                        <h4>手術室における臨床工学技士の役割と共有の意義</h4>
+                        <p>手術室における臨床工学技士の役割は、医療機器管理にとどまらず、安全管理、周術期医療への関与、チーム医療の推進など、年々その重要性を増しております。また、医療を取り巻く環境が日々変化する中で、各施設が抱える課題や取り組みを共有し、互いに学び合うことの意義は、ますます大きくなっているものと考えております。</p>
+
+                        <h4>学びと交流の場としての期待</h4>
+                        <p>本情報交換会が、参加される皆様にとって実りある学びの場となるとともに、施設や地域を越えた交流を深める貴重な機会となりますことを心より願っております。そして、これまで培われてきた全国のつながりをさらに広げ、手術室業務に携わる臨床工学技士のさらなる発展に寄与する会となることを期待しております。</p>
+
+                        <h4>結びに</h4>
+                        <p>結びに、第16回OR-CET情報交換会の開催にあたり、世話人の永井病院 山口様をはじめ、関係各位に深く感謝申し上げます。本会のさらなる発展を祈念いたしまして、事務局長のあいさつとさせていただきます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- 共通フッター -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-info">
@@ -71,6 +343,5 @@
 
     <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
     <script src="js/main.js"></script>
-
 </body>
 </html>

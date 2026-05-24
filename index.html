@@ -16,7 +16,7 @@
            1. What's New スクロール用
            ------------------------- */
         .whats-new-scroll-box {
-            max-height: 220px; /* ここの数値でスクロール枠の縦幅を調整できます */
+            max-height: 220px;
             overflow-y: auto;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
@@ -24,7 +24,6 @@
             padding: 10px 20px;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
-        /* スクロールバーのデザイン */
         .whats-new-scroll-box::-webkit-scrollbar {
             width: 8px;
         }
@@ -39,7 +38,6 @@
         .whats-new-scroll-box::-webkit-scrollbar-thumb:hover {
             background: #94a3b8; 
         }
-        /* リストの中身のデザイン調整 */
         .whats-new-item {
             display: flex;
             align-items: flex-start;
@@ -47,13 +45,13 @@
             border-bottom: 1px dashed #e2e8f0;
         }
         .whats-new-item:last-child {
-            border-bottom: none; /* 一番下の線は消す */
+            border-bottom: none;
         }
         .whats-new-date {
             font-weight: 700;
             color: var(--primary-color);
             margin-right: 20px;
-            flex-shrink: 0; /* 日付が潰れないようにする */
+            flex-shrink: 0;
         }
         .whats-new-title {
             line-height: 1.6;
@@ -69,13 +67,24 @@
             color: #c0392b;
             text-decoration: none;
         }
+        
+        /* 💡 スマホ表示の最適化（余白と文字サイズの調整） */
         @media (max-width: 576px) {
+            .whats-new-scroll-box {
+                padding: 5px 10px; /* 枠の余白を縮小 */
+                max-height: 200px;
+            }
             .whats-new-item {
                 flex-direction: column;
-                padding: 12px 0;
+                padding: 10px 0; /* 項目の余白を縮小 */
             }
             .whats-new-date {
-                margin-bottom: 5px;
+                margin-bottom: 3px;
+                font-size: 0.9rem; /* 日付を少し小さく */
+            }
+            .whats-new-title {
+                font-size: 0.95rem; /* タイトルも少し小さくして見やすく */
+                line-height: 1.5;
             }
         }
 
@@ -93,7 +102,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 10px;
             background: #fff;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
@@ -119,14 +127,17 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            padding: 6px;
+            padding: 8px; /* ロゴが枠に触れないように少し余白を多めに */
             box-sizing: border-box;
         }
+        
+        /* 文字が入る「募集枠」だけは少しパディングを入れる */
         .banner-link-card.placeholder {
             border: 2px dashed #cbd5e1;
             background: #f8fafc;
             color: #94a3b8;
             font-weight: normal;
+            padding: 10px; 
         }
         .banner-link-card.placeholder:hover {
             transform: translateY(-3px);
@@ -134,16 +145,22 @@
             border-color: var(--primary-color);
             color: var(--primary-color);
         }
+
         @media (max-width: 992px) {
             .banner-container-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
         }
+        /* 💡 スマホ表示の最適化（1列 → 2列に変更） */
         @media (max-width: 576px) {
             .banner-container-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
+                grid-template-columns: repeat(2, 1fr); /* 2列に変更！ */
+                gap: 10px; /* 隙間も少し狭める */
+            }
+            .banner-link-card {
+                /* スマホで2列にした時、文字が大きすぎないようにする（募集枠用） */
+                font-size: 0.75rem; 
             }
         }
     </style>
@@ -177,7 +194,6 @@
 
         <section class="whats-new container">
             <h2 class="section-title">What's New</h2>
-            
             <div class="whats-new-scroll-box">
                 <div class="whats-new-item">
                     <div class="whats-new-date">2026.05.24</div>
@@ -190,8 +206,7 @@
                     <div class="whats-new-date">2026.04.29</div>
                     <div class="whats-new-title">第16回 手術室臨床工学技士 OR-CET情報交換会ホームページを公開いたしました。</div>
                 </div>
-                
-                </div>
+            </div>
         </section>
 
         <section class="overview container">
@@ -222,31 +237,26 @@
                 
                 <a href="https://www.awlink.co.jp/" target="_blank" class="banner-link-card">
                     <img src="images/sponsor_awl.png" alt="エア・ウォーター・リンク株式会社">
-                    エア・ウォーター・リンク株式会社
                 </a>
 
                 <a href="https://ebmc.jp/" target="_blank" class="banner-link-card">
                     <img src="images/sponsor_ebmc.png" alt="イービーエム株式会社">   
-                    イービーエム株式会社
                 </a>
 
                 <a href="https://www.terumo.co.jp/" target="_blank" class="banner-link-card">
                     <img src="images/sponsor_terumo.png" alt="テルモ株式会社">
-                    テルモ株式会社
                 </a>
 
                 <a href="https://www.nipro.co.jp/" target="_blank" class="banner-link-card">
                     <img src="images/sponsor_nipro.png" alt="ニプロ株式会社">
-                    ニプロ株式会社
                 </a>
 
                 <a href="https://cosmossystem.co.jp/" target="_blank" class="banner-link-card">
                     <img src="images/sponsor_cosmosystem.png" alt="コスモスシステム株式会社">
-                    コスモスシステム株式会社
                 </a>
 
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScr3PELdZa9LwIKlYmm4lXgKYjmL-ztvn_4kZ0Myx6Rl1-rmg/viewform?usp=dialog" target="_blank" class="banner-link-card placeholder">
-                    新規協賛企業様 随時募集中
+                    新規協賛企業様<br>随時募集中
                 </a>
             </div>
         </section>
@@ -257,17 +267,14 @@
                 
                 <a href="https://ja-ces.or.jp/" target="_blank" class="banner-link-card">
                     <img src="images/kouen_jaces.jpg" alt="公益社団法人 日本臨床工学技士会">  
-                    日本臨床工学技士会
                 </a>
 
                 <a href="https://miece.jp/wp/" target="_blank" class="banner-link-card">
                     <img src="images/kouen_mieces.png" alt="一般社団法人 共益型三重県臨床工学技士会">   
-                    共益型三重県臨床工学技士会
                 </a>
 
                 <a href="https://www.pref.mie.lg.jp/" target="_blank" class="banner-link-card">
                    <img src="images/kouen_mieken.png" alt="三重県">  
-                    三重県
                 </a>
             </div>
         </section>

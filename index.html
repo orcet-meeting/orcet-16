@@ -10,6 +10,82 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .banner-container-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .banner-link-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            
+            /* [超重要] 600x150 (4:1) の比率を完全に固定します */
+            aspect-ratio: 4 / 1; 
+            width: 100%;
+            overflow: hidden; /* 万が一画像がはみ出ても枠内に収める */
+            box-sizing: border-box;
+        }
+        .banner-link-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            color: var(--primary-color);
+        }
+        
+        /* 画像バナーが挿入された時の自動最適化設定 */
+        .banner-link-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 企業のロゴを潰さず、比率を維持したまま枠内に綺麗に収めます */
+            padding: 6px; /* ロゴが枠のギリギリに当たらないよう、内側に上品な余白を確保 */
+            box-sizing: border-box;
+        }
+        
+        /* 今後追加されるプレースホルダー枠のスタイル */
+        .banner-link-card.placeholder {
+            border: 2px dashed #cbd5e1;
+            background: #f8fafc;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+        /* 💡 フォームへのリンクになったため、ホバー時に少し押しやすそうな反応（枠色変化のみ）を追加 */
+        .banner-link-card.placeholder:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        /* スマホ・タブレット表示の最適化 */
+        @media (max-width: 992px) {
+            .banner-container-grid {
+                grid-template-columns: repeat(2, 1fr); /* タブレット時は2列 */
+                gap: 15px;
+            }
+        }
+        @media (max-width: 576px) {
+            .banner-container-grid {
+                grid-template-columns: 1fr; /* スマホ時は1列で画面いっぱいに（4:1の比率は維持） */
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -70,19 +146,62 @@
             </div>
         </section>
 
-        <section class="sponsor container">
+        <section class="sponsor container" style="margin-top: 60px;">
             <h2 class="section-title">協賛企業</h2>
-            <div class="sponsor-grid">
-                <a href="#" target="_blank" class="sponsor-card">
-                    <div class="sponsor-image">Corporate Logo 1</div>
+            <div class="banner-container-grid">
+                
+                <a href="https://www.awlink.co.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_awl.png" alt="エア・ウォーター・リンク株式会社">
+                    エア・ウォーター・リンク株式会社
                 </a>
-                <a href="#" target="_blank" class="sponsor-card">
-                    <div class="sponsor-image">Corporate Logo 2</div>
+
+                <a href="https://ebmc.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_ebmc.png" alt="イービーエム株式会社">   
+                    イービーエム株式会社
                 </a>
-                <a href="#" target="_blank" class="sponsor-card">
-                    <div class="sponsor-image">Corporate Logo 3</div>
+
+                <a href="https://www.terumo.co.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_terumo.png" alt="テルモ株式会社">
+                    テルモ株式会社
                 </a>
-            </div>
+
+                <a href="https://www.nipro.co.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_nipro.png" alt="ニプロ株式会社">
+                    ニプロ株式会社
+                </a>
+
+                <a href="https://cosmossystem.co.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_cosmosystem.png" alt="コスモスシステム株式会社">
+                    コスモスシステム株式会社
+                </a>
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScr3PELdZa9LwIKlYmm4lXgKYjmL-ztvn_4kZ0Myx6Rl1-rmg/viewform?usp=dialog" target="_blank" class="banner-link-card placeholder">
+                    新規協賛企業様 随時募集中
+                </a>
+
+                </div>
+        </section>
+
+        <section class="supporter container" style="margin-top: 60px; margin-bottom: 80px;">
+            <h2 class="section-title">後援</h2>
+            <div class="banner-container-grid">
+                
+                <a href="https://ja-ces.or.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/kouen_jaces.jpg" alt="公益社団法人 日本臨床工学技士会">  
+                    日本臨床工学技士会
+                </a>
+
+                <a href="https://miece.jp/wp/" target="_blank" class="banner-link-card">
+                    <img src="images/kouen_mieces.png" alt="一般社団法人 共益型三重県臨床工学技士会">   
+                    共益型三重県臨床工学技士会
+                </a>
+
+                <a href="https://www.pref.mie.lg.jp/" target="_blank" class="banner-link-card">
+                   <img src="images/kouen_mieken.png" alt="三重県">  
+                    三重県
+                </a>
+
+                </div>
         </section>
     </main>
 
@@ -90,9 +209,10 @@
         <div class="footer-container">
             <div class="footer-info">
                 <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
-                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>                
-                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室</p>
-                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科</p>
+                <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
+                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>
+                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室 内</p>
+                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科 内</p>
                 <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>
             </div>
             <div class="footer-links">

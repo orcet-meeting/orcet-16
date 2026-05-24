@@ -12,92 +12,65 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* -------------------------
-           1. What's New スクロール用
-           ------------------------- */
-        .whats-new-scroll-box {
-            max-height: 220px;
-            overflow-y: auto;
+        /* What's New シンプルリスト型 */
+        .whats-new-flat {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: #fff;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            background: #fff;
-            padding: 10px 20px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-            display: block; /* フレックスボックスの干渉を防ぐ */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
-        .whats-new-scroll-box::-webkit-scrollbar {
-            width: 8px;
-        }
-        .whats-new-scroll-box::-webkit-scrollbar-track {
-            background: #f1f5f9; 
-            border-radius: 4px;
-        }
-        .whats-new-scroll-box::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
-        }
-        .whats-new-scroll-box::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
-        }
-        
-        .whats-new-item {
+        .whats-new-flat li {
             display: flex;
             align-items: flex-start;
-            justify-content: flex-start !important; /* 強制的に上（左）詰めに */
-            padding: 15px 0;
+            padding: 15px 20px;
             border-bottom: 1px dashed #e2e8f0;
-            height: auto !important; /* 外部CSSによる高さの固定を解除 */
-            min-height: 0 !important;
+            margin: 0; 
         }
-        .whats-new-item:last-child {
+        .whats-new-flat li:last-child {
             border-bottom: none;
         }
-        .whats-new-date {
+        .whats-new-flat .date {
             font-weight: 700;
             color: var(--primary-color);
             margin-right: 20px;
             flex-shrink: 0;
-            margin-bottom: 0 !important; /* 余計な下余白をリセット */
+            font-size: 1rem;
         }
-        .whats-new-title {
-            line-height: 1.6;
+        .whats-new-flat .text {
             color: #444;
-            margin-top: 0 !important; /* 余計な上余白をリセット */
+            line-height: 1.6;
+            margin: 0;
         }
-        .whats-new-title a.news-link {
+        .whats-new-flat .text a {
             color: var(--accent-color);
             font-weight: 700;
             text-decoration: underline;
             transition: 0.3s;
         }
-        .whats-new-title a.news-link:hover {
+        .whats-new-flat .text a:hover {
             color: #c0392b;
             text-decoration: none;
         }
         
-        /* 💡 スマホ表示での空白引き離し現象を完全リセット */
         @media (max-width: 576px) {
-            .whats-new-scroll-box {
-                padding: 10px 15px; 
-                max-height: 200px;
-            }
-            .whats-new-item {
+            .whats-new-flat li {
                 flex-direction: column;
-                padding: 12px 0; 
-                gap: 4px; /* 日付とテキストの隙間を強制的に4pxに固定 */
+                padding: 12px 15px;
             }
-            .whats-new-date {
+            .whats-new-flat .date {
+                margin-bottom: 4px;
                 font-size: 0.9rem;
             }
-            .whats-new-title {
+            .whats-new-flat .text {
                 font-size: 0.95rem;
                 line-height: 1.5;
             }
         }
 
-        /* -------------------------
-           2. 後援・協賛バナー画像 最適化
-           ------------------------- */
+        /* 後援・協賛バナー画像 最適化 */
         .banner-container-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -138,7 +111,6 @@
             box-sizing: border-box;
         }
         
-        /* 募集枠用のスタイル */
         .banner-link-card.placeholder {
             border: 2px dashed #cbd5e1;
             background: #f8fafc;
@@ -199,19 +171,16 @@
 
         <section class="whats-new container">
             <h2 class="section-title">What's New</h2>
-            <div class="whats-new-scroll-box">
-                <div class="whats-new-item">
-                    <div class="whats-new-date">2026.05.24</div>
-                    <div class="whats-new-title">
-                        協賛企業の募集を開始いたしました。<a href="https://docs.google.com/forms/d/e/1FAIpQLScr3PELdZa9LwIKlYmm4lXgKYjmL-ztvn_4kZ0Myx6Rl1-rmg/viewform" target="_blank" class="news-link">コチラのお申し込みフォーム <i class="fas fa-external-link-alt" style="font-size: 0.85em;"></i></a> よりご登録をお願いいたします。
-                    </div>
-                </div>
-
-                <div class="whats-new-item">
-                    <div class="whats-new-date">2026.04.29</div>
-                    <div class="whats-new-title">第16回 手術室臨床工学技士 OR-CET情報交換会ホームページを公開いたしました。</div>
-                </div>
-            </div>
+            <ul class="whats-new-flat">
+                <li>
+                    <span class="date">2026.05.24</span>
+                    <span class="text">協賛企業の募集を開始いたしました。<a href="https://docs.google.com/forms/d/e/1FAIpQLScr3PELdZa9LwIKlYmm4lXgKYjmL-ztvn_4kZ0Myx6Rl1-rmg/viewform" target="_blank">コチラのお申し込みフォーム <i class="fas fa-external-link-alt" style="font-size: 0.85em;"></i></a> よりご登録をお願いいたします。</span>
+                </li>
+                <li>
+                    <span class="date">2026.04.29</span>
+                    <span class="text">第16回 手術室臨床工学技士 OR-CET情報交換会ホームページを公開いたしました。</span>
+                </li>
+            </ul>
         </section>
 
         <section class="overview container">
@@ -274,7 +243,7 @@
                     <img src="images/kouen_mieces.png" alt="一般社団法人 共益型三重県臨床工学技士会">   
                 </a>
 
-            </div>
+                </div>
         </section>
     </main>
 

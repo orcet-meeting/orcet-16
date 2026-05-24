@@ -21,6 +21,16 @@
             padding-left: 15px;
             margin-bottom: 20px;
             font-weight: 700;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        /* 五十音順の注記スタイル */
+        .sort-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 400;
+            margin-left: 15px;
         }
         .links-grid {
             display: grid;
@@ -57,6 +67,11 @@
             .links-grid {
                 grid-template-columns: 1fr;
             }
+            .sort-note {
+                margin-left: 0;
+                margin-top: 5px;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -86,39 +101,38 @@
         <h2 class="section-title">関連リンク</h2>
         
         <div class="links-section">
-            <h3>後援団体</h3>
+            <h3>後援団体 <span class="sort-note">※五十音順</span></h3>
             <div class="links-grid">
-                <a href="https://ja-ces.or.jp/" target="_blank" class="link-item-card">
-                    公益社団法人 日本臨床工学技士会 <i class="fas fa-external-link-alt"></i>
-                </a>
                 <a href="https://miece.jp/wp/" target="_blank" class="link-item-card">
                     一般社団法人 共益型三重県臨床工学技士会 <i class="fas fa-external-link-alt"></i>
                 </a>
-                <a href="https://www.pref.mie.lg.jp/" target="_blank" class="link-item-card">
-                    三重県 <i class="fas fa-external-link-alt"></i>
+                
+                <a href="https://ja-ces.or.jp/" target="_blank" class="link-item-card">
+                    公益社団法人 日本臨床工学技士会 <i class="fas fa-external-link-alt"></i>
                 </a>
+                
                 </div>
         </div>
 
         <div class="links-section">
-            <h3>協賛企業</h3>
+            <h3>協賛企業 <span class="sort-note">※五十音順</span></h3>
             <div class="links-grid">
-                <a href="https://www.awlink.co.jp/" target="_blank" class="link-item-card">
-                    エア・ウォーター・リンク株式会社 <i class="fas fa-external-link-alt"></i>
-                </a>
                 <a href="https://ebmc.jp/" target="_blank" class="link-item-card">
                     イービーエム株式会社 <i class="fas fa-external-link-alt"></i>
                 </a>
+                
+                <a href="https://www.awlink.co.jp/" target="_blank" class="link-item-card">
+                    エア・ウォーター・リンク株式会社 <i class="fas fa-external-link-alt"></i>
+                </a>
+                
                 <a href="https://www.terumo.co.jp/" target="_blank" class="link-item-card">
                     テルモ株式会社 <i class="fas fa-external-link-alt"></i>
                 </a>
+                
                 <a href="https://www.nipro.co.jp/" target="_blank" class="link-item-card">
                     ニプロ株式会社 <i class="fas fa-external-link-alt"></i>
                 </a>
-                <a href="https://cosmossystem.co.jp/" target="_blank" class="link-item-card">
-                    コスモスシステム株式会社 <i class="fas fa-external-link-alt"></i>
-                </a>
-                </div>
+            </div>
         </div>
     </main>
 

@@ -12,134 +12,30 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* What's New シンプルリスト型 */
-        .whats-new-flat {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .whats-new-flat li {
-            display: flex;
-            align-items: flex-start;
-            padding: 15px 20px;
-            border-bottom: 1px dashed #e2e8f0;
-            margin: 0; 
-        }
-        .whats-new-flat li:last-child {
-            border-bottom: none;
-        }
-        .whats-new-flat .date {
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-right: 20px;
-            flex-shrink: 0;
-            font-size: 1rem;
-        }
-        .whats-new-flat .text {
-            color: #444;
-            line-height: 1.6;
-            margin: 0;
-        }
-        .whats-new-flat .text a {
-            color: var(--accent-color);
-            font-weight: 700;
-            text-decoration: underline;
-            transition: 0.3s;
-        }
-        .whats-new-flat .text a:hover {
-            color: #c0392b;
-            text-decoration: none;
-        }
+        .whats-new-flat { list-style: none; padding: 0; margin: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); overflow: hidden; }
+        .whats-new-flat li { display: flex; align-items: flex-start; padding: 15px 20px; border-bottom: 1px dashed #e2e8f0; margin: 0 !important; height: auto !important; min-height: 0 !important; }
+        .whats-new-flat li:last-child { border-bottom: none; }
+        .whats-new-flat .date { font-weight: 700; color: var(--primary-color); margin-right: 20px; flex-shrink: 0; font-size: 1rem; margin-bottom: 0 !important; padding: 0 !important; }
+        .whats-new-flat .text { color: #444; line-height: 1.6; margin: 0 !important; padding: 0 !important; }
+        .whats-new-flat .text a { color: var(--accent-color); font-weight: 700; text-decoration: underline; transition: 0.3s; }
+        .whats-new-flat .text a:hover { color: #c0392b; text-decoration: none; }
         
         @media (max-width: 576px) {
-            .whats-new-flat li {
-                flex-direction: column;
-                padding: 12px 15px;
-            }
-            .whats-new-flat .date {
-                margin-bottom: 4px;
-                font-size: 0.9rem;
-            }
-            .whats-new-flat .text {
-                font-size: 0.95rem;
-                line-height: 1.5;
-            }
+            .whats-new-flat li { flex-direction: column; padding: 12px 15px !important; }
+            .whats-new-flat .date { margin-bottom: 4px !important; font-size: 0.9rem; }
+            .whats-new-flat .text { font-size: 0.95rem; line-height: 1.5; }
         }
 
-        /* 後援・協賛バナー画像 最適化 */
-        .banner-container-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .banner-link-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            color: #333;
-            font-weight: 700;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: all 0.3s ease;
-            aspect-ratio: 4 / 1; 
-            width: 100%;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-        .banner-link-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            color: var(--primary-color);
-        }
-        .banner-link-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 8px;
-            box-sizing: border-box;
-        }
+        .banner-container-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+        .banner-link-card { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; text-decoration: none; color: #333; font-weight: 700; font-size: 0.95rem; box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.3s ease; aspect-ratio: 4 / 1; width: 100%; overflow: hidden; box-sizing: border-box; }
+        .banner-link-card:hover { border-color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); color: var(--primary-color); }
+        .banner-link-card img { width: 100%; height: 100%; object-fit: contain; padding: 8px; box-sizing: border-box; }
         
-        .banner-link-card.placeholder {
-            border: 2px dashed #cbd5e1;
-            background: #f8fafc;
-            color: #94a3b8;
-            font-weight: normal;
-            padding: 10px; 
-        }
-        .banner-link-card.placeholder:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
+        .banner-link-card.placeholder { border: 2px dashed #cbd5e1; background: #f8fafc; color: #94a3b8; font-weight: normal; padding: 10px; }
+        .banner-link-card.placeholder:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.05); border-color: var(--primary-color); color: var(--primary-color); }
 
-        @media (max-width: 992px) {
-            .banner-container-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-        }
-        @media (max-width: 576px) {
-            .banner-container-grid {
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 10px; 
-            }
-            .banner-link-card {
-                font-size: 0.75rem; 
-            }
-        }
+        @media (max-width: 992px) { .banner-container-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } }
+        @media (max-width: 576px) { .banner-container-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .banner-link-card { font-size: 0.75rem; } }
     </style>
 </head>
 <body>
@@ -217,6 +113,14 @@
                     <img src="images/sponsor_ebmc.png" alt="イービーエム株式会社">   
                 </a>
 
+                <a href="https://cosmossystem.co.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_cosmosystem.png" alt="コスモスシステム株式会社">
+                </a>
+
+                <a href="https://www.takarabelmont.co.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_takarabelmont.png" alt="タカラベルモント株式会社">
+                </a>
+
                 <a href="https://www.terumo.co.jp/" target="_blank" class="banner-link-card">
                     <img src="images/sponsor_terumo.png" alt="テルモ株式会社">
                 </a>
@@ -225,8 +129,18 @@
                     <img src="images/sponsor_nipro.png" alt="ニプロ株式会社">
                 </a>
 
+                <a href="https://www.miekin.co.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/sponsor_miekinzoku.png" alt="三重金属工業">
+                </a>
+
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScr3PELdZa9LwIKlYmm4lXgKYjmL-ztvn_4kZ0Myx6Rl1-rmg/viewform?usp=dialog" target="_blank" class="banner-link-card placeholder">
                     新規協賛企業様<br>随時募集中
+                </a>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="exhibition.html" class="btn-register" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px; background: #e74c3c;">
+                    <i class="fas fa-door-open"></i> Web展示ブースを見る
                 </a>
             </div>
         </section>
@@ -236,14 +150,17 @@
             <div class="banner-container-grid">
                 
                 <a href="https://ja-ces.or.jp/" target="_blank" class="banner-link-card">
-                    <img src="images/kouen_jaces.jpg" alt="公益社団法人 日本臨床工学技士会">  
+                    <img src="images/kouen_jaces.png" alt="公益社団法人 日本臨床工学技士会">  
                 </a>
 
                 <a href="https://miece.jp/wp/" target="_blank" class="banner-link-card">
                     <img src="images/kouen_mieces.png" alt="一般社団法人 共益型三重県臨床工学技士会">   
                 </a>
 
-                </div>
+                <a href="https://www.pref.mie.lg.jp/" target="_blank" class="banner-link-card">
+                   <img src="images/kouen_mieken.png" alt="三重県">  
+                </a>
+            </div>
         </section>
     </main>
 
@@ -270,7 +187,6 @@
             <small>Copyright &copy; 2027 The 16th OR-CET Information Exchange Meeting. All Rights Reserved.</small>
         </div>
     </footer>
-
     <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
     <script src="js/main.js"></script>
 </body>

@@ -11,67 +11,24 @@
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        .links-section {
-            margin-bottom: 50px;
-        }
+        .links-section { margin-bottom: 50px; }
         .links-section h3 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            display: flex;
-            align-items: baseline;
-            flex-wrap: wrap;
+            font-size: 1.3rem; color: var(--primary-color); border-left: 5px solid var(--accent-color);
+            padding-left: 15px; margin-bottom: 20px; font-weight: 700; display: flex; align-items: baseline; flex-wrap: wrap;
         }
-        /* 五十音順の注記スタイル */
-        .sort-note {
-            font-size: 0.85rem;
-            color: #64748b;
-            font-weight: 400;
-            margin-left: 15px;
-        }
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
+        .sort-note { font-size: 0.85rem; color: #64748b; font-weight: 400; margin-left: 15px; }
+        .links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .link-item-card {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            display: flex; align-items: center; padding: 15px 20px; background: #fff;
+            border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #333;
+            font-weight: 500; transition: all 0.2s ease;
         }
-        .link-item-card i {
-            margin-left: auto;
-            color: #94a3b8;
-            transition: all 0.2s ease;
-        }
-        .link-item-card:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            background: #f8fafc;
-        }
-        .link-item-card:hover i {
-            color: var(--primary-color);
-            transform: translateX(3px);
-        }
+        .link-item-card i { margin-left: auto; color: #94a3b8; transition: all 0.2s ease; }
+        .link-item-card:hover { border-color: var(--primary-color); color: var(--primary-color); background: #f8fafc; }
+        .link-item-card:hover i { color: var(--primary-color); transform: translateX(3px); }
         @media (max-width: 768px) {
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-            .sort-note {
-                margin-left: 0;
-                margin-top: 5px;
-                width: 100%;
-            }
+            .links-grid { grid-template-columns: 1fr; }
+            .sort-note { margin-left: 0; margin-top: 5px; width: 100%; }
         }
     </style>
 </head>
@@ -111,7 +68,10 @@
                     公益社団法人 日本臨床工学技士会 <i class="fas fa-external-link-alt"></i>
                 </a>
                 
-                </div>
+                <a href="https://www.pref.mie.lg.jp/" target="_blank" class="link-item-card">
+                    三重県 <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
         </div>
 
         <div class="links-section">
@@ -125,12 +85,24 @@
                     エア・ウォーター・リンク株式会社 <i class="fas fa-external-link-alt"></i>
                 </a>
                 
+                <a href="https://cosmossystem.co.jp/" target="_blank" class="link-item-card">
+                    コスモスシステム株式会社 <i class="fas fa-external-link-alt"></i>
+                </a>
+
+                <a href="https://www.takarabelmont.co.jp/" target="_blank" class="link-item-card">
+                    タカラベルモント株式会社 <i class="fas fa-external-link-alt"></i>
+                </a>
+
                 <a href="https://www.terumo.co.jp/" target="_blank" class="link-item-card">
                     テルモ株式会社 <i class="fas fa-external-link-alt"></i>
                 </a>
                 
                 <a href="https://www.nipro.co.jp/" target="_blank" class="link-item-card">
                     ニプロ株式会社 <i class="fas fa-external-link-alt"></i>
+                </a>
+
+                <a href="https://www.miekin.co.jp/" target="_blank" class="link-item-card">
+                    三重金属工業 <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
         </div>
@@ -159,7 +131,6 @@
             <small>Copyright &copy; 2027 The 16th OR-CET Information Exchange Meeting. All Rights Reserved.</small>
         </div>
     </footer>
-
     <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
     <script src="js/main.js"></script>
 </body>

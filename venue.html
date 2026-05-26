@@ -10,51 +10,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- ページ内リンク用の専用スタイル -->
     <style>
-        /* スムーススクロール（滑らかに移動する設定） */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* 固定ヘッダーにタイトルが隠れないようにする余白調整 */
-        .guide-section {
-            scroll-margin-top: 90px; 
-        }
-        /* 目次メニューのデザイン */
-        .page-menu {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-            justify-content: center;
-        }
-        .page-menu a {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 20px;
-            background: #fff;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .page-menu a i {
-            margin-right: 8px;
-        }
-        .page-menu a:hover {
-            background: var(--primary-color);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+        html { scroll-behavior: smooth; }
+        .guide-section { scroll-margin-top: 90px; margin-bottom: 60px; }
+        
+        /* 目次メニュー */
+        .page-menu { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; justify-content: center; }
+        .page-menu a { display: inline-flex; align-items: center; padding: 10px 20px; background: #fff; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 30px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.3s ease; }
+        .page-menu a i { margin-right: 8px; }
+        .page-menu a:hover { background: var(--primary-color); color: #fff; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        
+        /* 観光・グルメ用のカード型グリッドレイアウト */
+        .tourist-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 20px; }
+        .tourist-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; display: flex; flex-direction: column; }
+        .tourist-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .tourist-img { height: 180px; background: #f1f5f9; position: relative; overflow: hidden; }
+        .tourist-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* 画像プレースホルダー */
+        .tourist-img-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; background: #e2e8f0; color: #94a3b8; font-size: 3.5rem; }
+        .tourist-badge { position: absolute; top: 10px; left: 10px; background: var(--accent-color); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; z-index: 2; }
+        
+        .tourist-content { padding: 20px; flex-grow: 1; }
+        .tourist-content h4 { color: var(--primary-color); font-size: 1.15rem; margin-bottom: 10px; display: flex; align-items: center; font-weight: 700; }
+        .tourist-content h4 i { margin-right: 8px; color: #f39c12; }
+        .tourist-content p { font-size: 0.95rem; color: #444; line-height: 1.7; margin-bottom: 0; }
+
         @media (max-width: 768px) {
-            .page-menu a {
-                width: 100%;
-                justify-content: center;
-            }
+            .page-menu a { width: 100%; justify-content: center; }
+            .tourist-grid { grid-template-columns: 1fr; gap: 20px; }
+            .tourist-img { height: 160px; }
         }
     </style>
 </head>
@@ -73,7 +58,7 @@
                     <li><a href="program.html">プログラム</a></li>
                     <li><a href="guidelines.html">座長・発表者へ</a></li>
                     <li><a href="abstract-submission.html">演題登録</a></li>
-                    <li><a href="venue.html">会場・周辺</a></li>
+                    <li><a href="venue.html" class="active">会場・周辺</a></li>
                     <li><a href="registration.html" class="btn-register">参加登録</a></li>
                 </ul>
             </nav>
@@ -82,17 +67,17 @@
 
     <main class="container">
         <h2 class="section-title">会場・周辺案内</h2>
+        <p style="text-align: center; margin-bottom: 40px; color: #64748b; font-size: 1.1rem;">学会へのご参加と合わせて、食・歴史・自然が豊かな三重県を存分に満喫してください。</p>
 
-        <!-- 目次メニュー -->
         <div class="page-menu">
             <a href="#access"><i class="fas fa-map-marked-alt"></i> 会場アクセス</a>
             <a href="#facility"><i class="fas fa-building"></i> 施設・駐車場</a>
-            <a href="#ise-shima"><i class="fas fa-suitcase-rolling"></i> 伊勢・志摩アクセス</a>
-            <a href="#gourmet"><i class="fas fa-utensils"></i> おすすめグルメ</a>
-            <a href="#sightseeing"><i class="fas fa-camera-retro"></i> 観光スポット</a>
+            <a href="#gourmet"><i class="fas fa-utensils"></i> おすすめ松阪グルメ</a>
+            <a href="#nightlife"><i class="fas fa-glass-cheers"></i> 夜の懇親・居酒屋</a>
+            <a href="#sightseeing"><i class="fas fa-camera-retro"></i> 松阪・歴史さんぽ</a>
+            <a href="#excursion"><i class="fas fa-car-side"></i> 伊勢志摩・温泉アクセス</a>
         </div>
 
-        <!-- ① 会場アクセス -->
         <section id="access" class="guide-section">
             <h3><i class="fas fa-map-marked-alt"></i> 会場アクセス</h3>
             <div class="guide-content">
@@ -103,7 +88,6 @@
                     <li>伊勢自動車道「松阪IC」より車で約15分</li>
                 </ul>
                 
-                <!-- Google Map埋め込み -->
                 <div style="margin: 25px 0 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.0141351299158!2d136.52719001239953!3d34.578508889644695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60046b26dca55555%3A0x13e7385e207147b5!2z5p2-6Ziq5biC55Sj5qWt5oyv6IiI44K744Oz44K_44O8!5e0!3m2!1sja!2sjp!4v1777555313744!5m2!1sja!2sjp" width="100%" height="400" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -114,17 +98,14 @@
             </div>
         </section>
 
-        <!-- ② 施設・駐車場 -->
         <section id="facility" class="guide-section">
             <h3><i class="fas fa-building"></i> 施設・駐車場案内</h3>
             <div class="guide-content">
-                
                 <h4>駐車場について</h4>
                 <div class="notice-box urgent" style="margin-top: 10px;">
                     <p><i class="fas fa-parking"></i> 無料駐車場（約45台）がございますが、満車になる可能性が高いため、公共交通機関のご利用や近隣の有料駐車場、または松阪市役所の駐車場のご利用をお願いいたします。</p>
                 </div>
                 
-                <!-- 駐車場マイマップ -->
                 <div style="margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                     <iframe src="https://www.google.com/maps/d/embed?mid=14hZgr73HUgb7Ri54JpBiaSxR9EIMlEaa&ehbc=2E312F" width="100%" height="450" style="border:0; display: block;"></iframe>
                 </div>
@@ -133,33 +114,179 @@
                 <h4 style="margin-top: 40px;">クローク（荷物預かり）</h4>
                 <p>会場内にクロークはございません。周辺の有料施設をご利用ください。</p>
                 <div class="external-links" style="margin-top: 10px;">
-                    <a href="https://www.matsusaka-kanko.com/service-baggage-room/" target="_blank" style="display: block; margin-bottom: 5px;"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 手荷物預かり</a>
-                    <a href="https://cloak.ecbo.io/ja/jpn/city/mie/1122" target="_blank" style="display: block;"><i class="fas fa-external-link-alt"></i> ecbo cloak（松阪駅周辺）</a>
+                    <a href="https://www.matsusaka-kanko.com/service-baggage-room/" target="_blank" style="display: block; margin-bottom: 5px; color: var(--primary-color); text-decoration: underline;"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 手荷物預かり</a>
+                    <a href="https://cloak.ecbo.io/ja/jpn/city/mie/1122" target="_blank" style="display: block; color: var(--primary-color); text-decoration: underline;"><i class="fas fa-external-link-alt"></i> ecbo cloak（松阪駅周辺）</a>
                 </div>
             </div>
         </section>
 
-        <!-- ③ 前乗り推奨 -->
-        <section id="ise-shima" class="guide-section">
-            <h3><i class="fas fa-suitcase-rolling"></i> 前乗り推奨！伊勢・志摩エリアへも好アクセス</h3>
-            <div class="notice-box" style="background-color: #e6f7ff; border: 2px solid #91d5ff;">
+        <section id="gourmet" class="guide-section">
+            <h3><i class="fas fa-utensils"></i> おすすめ松阪グルメ</h3>
+            <p>学会の合間やランチに！三重県に来たら絶対に外せない「地の味」をご紹介します。</p>
+            
+            <div class="tourist-grid">
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge">王道</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-hamburger"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-crown"></i> 松阪牛（まつさかうし）</h4>
+                        <p>「肉の芸術品」とも称される松阪牛。すき焼き、網焼き、ステーキなど専門店が市内に多数点在しています。<span style="color: #e74c3c; font-size: 0.9em;">※有名店（和田金、牛銀本店など）は大変混み合うため事前予約を強く推奨します。</span></p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge">ソウルフード</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-fire"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-drumstick-bite"></i> 松阪鶏焼き肉</h4>
+                        <p>松阪市民に愛されるB級グルメ。甘辛い濃厚な味噌ダレを絡めた鶏肉を網焼きで香ばしく！ご飯にもビールにも相性抜群で、リーズナブルに楽しめます。</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder"><i class="fas fa-bacon"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-piggy-bank"></i> 特産松阪豚（まつさかぶた）</h4>
+                        <p>厳選された環境で育てられた松阪豚は、臭みがなく「つきたての餅」のような良質な脂の甘みが特徴。とんかつや豚しゃぶでぜひご賞味ください。</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge">駅弁</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-box-open"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-train"></i> 名物駅弁「モー太郎弁当」</h4>
+                        <p>帰りの電車のお供におすすめ！フタを開けると「ふるさと」のメロディが流れるインパクト抜群の牛型容器に入ったすき焼き弁当です。（松阪駅売店「あら竹」にて）</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge">隣町の名物</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-bowl-food"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-dumpling"></i> 津ぎょうざ ＆ ラーメン</h4>
+                        <p>松阪のお隣・津市発祥の、直径15cmの特大揚げ餃子「津ぎょうざ」は食べ応え抜群！また、松阪〜津エリアには出汁にこだわった美味しいラーメン店も多数存在します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nightlife" class="guide-section">
+            <h3><i class="fas fa-glass-cheers"></i> 夜の懇親・居酒屋ガイド</h3>
+            <p>学会後の情報交換や、仲間との労労会に！美味しいお酒と肴で語り合いましょう。</p>
+            
+            <div class="tourist-grid">
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder" style="background:#2c3e50;"><i class="fas fa-beer" style="color:#e67e22;"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-store"></i> 焼き鳥 ＆ 大衆居酒屋</h4>
+                        <p>松阪駅周辺には、ふらっと立ち寄れる赤提灯から、こだわりの焼き鳥をコースで出す名店まで活気ある居酒屋が揃っています。熱い医療トークの続きはこちらでどうぞ。</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder" style="background:#2c3e50;"><i class="fas fa-fish" style="color:#3498db;"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-wine-bottle"></i> 南伊勢の海鮮 ＆ 三重の地酒</h4>
+                        <p>伊勢湾・熊野灘の豊かな漁場から届く新鮮な魚介類を堪能！サミットでも提供された「作（ざく）」や希少な「而今（じこん）」など、世界に誇る三重の日本酒と共に。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sightseeing" class="guide-section">
+            <h3><i class="fas fa-camera-retro"></i> 松阪・歴史さんぽ（会場周辺）</h3>
+            <p>会場のある松阪市中心部は、商都「豪商のまち」として栄えた歴史あるエリアです。徒歩圏内でも十分に歴史探訪をお楽しみいただけます。</p>
+
+            <div class="tourist-grid">
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder"><i class="fab fa-fort-awesome"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-leaf"></i> 松坂城跡（松阪公園）</h4>
+                        <p>蒲生氏郷によって築かれた名城の跡。現在は建造物は残っていませんが、野面積み（のづらづみ）と呼ばれる豪壮な石垣が当時の面影を強く残しています。高台から松阪市街を一望できます。</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder"><i class="fas fa-house-user"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-torii-gate"></i> 御城番屋敷（ごじょうばんやしき）</h4>
+                        <p>松坂城跡のすぐ裏手にある紀州藩士の武家屋敷群。石畳と槇の生垣が続く美しい景観は国指定重要文化財。現在も実際に人が住んでいる非常に珍しい文化財です。</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder"><i class="fas fa-coins"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-landmark"></i> 豪商の館（旧長谷川治郎兵衛邸）</h4>
+                        <p>江戸に店を構え大成功を収めた松阪商人の本宅。広大な敷地に立つ立派な建物、大金庫、手入れの行き届いた美しい回遊式日本庭園などから、当時の圧倒的な財力を体感できます。</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder"><i class="fas fa-book-open-reader"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-scroll"></i> 本居宣長記念館・鈴屋</h4>
+                        <p>「古事記伝」で知られる国学者・本居宣長の直筆原稿や遺品を展示。隣接する松坂城跡内には彼が暮らした旧宅「鈴屋（すずのや）」が移築保存されています。</p>
+                    </div>
+                </div>
+
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <div class="tourist-img-placeholder"><i class="fas fa-tshirt"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-palette"></i> 松阪もめん手織りセンター</h4>
+                        <p>「松阪嶋」と呼ばれる粋な藍色の縞模様が特徴の伝統工芸「松阪もめん」。江戸の庶民や歌舞伎役者も愛用した織物の機織り体験（要予約）や、お土産探しに最適です。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="https://www.matsusaka-kanko.com/" target="_blank" class="btn-sub" style="padding: 12px 30px; font-size: 1rem;"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 公式サイトでさらに探す</a>
+            </div>
+        </section>
+
+        <section id="excursion" class="guide-section">
+            <h3 style="color: #2980b9; border-left-color: #3498db;"><i class="fas fa-train"></i> 前乗り推奨！伊勢・志摩エリアへも好アクセス</h3>
+            
+            <div class="notice-box" style="background-color: #e6f7ff; border: 2px solid #91d5ff; margin-bottom: 25px;">
                 <p style="font-weight: bold; color: #0050b3; font-size: 1.1rem; margin-bottom: 15px;">
-                    <i class="fas fa-train"></i> 学会の前日は、少し早めに来て三重を満喫しませんか？
+                    <i class="fas fa-suitcase-rolling"></i> 学会の前日は、少し早めに来て三重を満喫しませんか？
                 </p>
-                <p style="margin-bottom: 15px;">
+                <p style="margin-bottom: 15px; color: #333;">
                     松阪市は三重県中南勢の交通の要所です。<br>
-                    近鉄やJRを利用すれば、<strong>伊勢神宮や鳥羽・志摩エリアへ乗り換えなしでアクセス可能！</strong><br>
-                    松阪を拠点（ベースキャンプ）にして、前日入りでの観光をぜひご検討ください。
+                    近鉄やJRを利用すれば、<strong>伊勢神宮や鳥羽・志摩エリアへ乗り換えなしでアクセス可能！</strong>松阪を拠点にして、前日入りでの観光をぜひご検討ください。
                 </p>
-                <ul class="dot-list" style="line-height: 1.8;">
+                <ul class="dot-list" style="line-height: 1.8; color: #333;">
                     <li><strong>⛩️ 伊勢エリア（伊勢神宮・おかげ横丁）</strong><br>
-                        【近鉄】特急：約15分 ／ 急行：約20分<br>
-                        【ＪＲ】快速みえ：約25分<br>
+                        【近鉄】特急：約15分 ／ 急行：約20分 【ＪＲ】快速みえ：約25分<br>
                         <span style="font-size: 0.9em; color: #666;">※「伊勢市駅」または「宇治山田駅」下車</span>
                     </li>
                     <li style="margin-top: 15px;"><strong>🐬 鳥羽エリア（鳥羽水族館・ミキモト真珠島）</strong><br>
-                        【近鉄】特急：約30分 ／ 急行：約40分<br>
-                        【ＪＲ】快速みえ：約40分<br>
+                        【近鉄】特急：約30分 ／ 急行：約40分 【ＪＲ】快速みえ：約40分<br>
                         <span style="font-size: 0.9em; color: #666;">※「鳥羽駅」下車</span>
                     </li>
                     <li style="margin-top: 15px;"><strong>🎢 志摩エリア（志摩スペイン村・英虞湾）</strong><br>
@@ -168,73 +295,50 @@
                     </li>
                 </ul>
             </div>
-        </section>
 
-        <!-- ④ グルメ -->
-        <section id="gourmet" class="guide-section">
-            <h3><i class="fas fa-utensils"></i> おすすめ松阪グルメ</h3>
-            <div class="guide-content">
-                <p style="margin-bottom: 20px;">学会の合間や懇親の場として、松阪市ならではの食をお楽しみください。</p>
-                
-                <h4>🥩 松阪牛（まつさかうし）</h4>
-                <p>「肉の芸術品」とも称される松阪牛。<br>
-                すき焼き、網焼き、ステーキなど、専門店が市内に多数点在しています。<br>
-                <span style="color: #e74c3c; font-size: 0.9em;">※有名店（和田金、牛銀本店など）は大変混み合うため、事前のご予約を強くお勧めいたします。</span></p>
+            <div class="tourist-grid">
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge" style="background:#8e44ad;">車で15分</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-store"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-leaf" style="color:#27ae60;"></i> VISON（ヴィソン）<span style="font-size: 0.8rem; background: var(--accent-color); color: #fff; padding: 2px 6px; border-radius: 4px; margin-left: 5px;">多気町</span></h4>
+                        <p>日本最大級の商業リゾート。三重の豊かな食材を味わえるマルシェや飲食店、温浴施設が集結。松阪駅からの直通バス（約40分）もあり、お土産探しにも最適です。</p>
+                    </div>
+                </div>
 
-                <h4 style="margin-top: 25px;">🐔 松阪鶏焼き肉（ソウルフード）</h4>
-                <p>松阪市民に愛されるB級グルメ。<br>
-                甘辛い濃厚な味噌ダレを絡めた鶏肉を、網焼きで香ばしく焼き上げます。<br>
-                ご飯にもビールにも相性抜群で、リーズナブルに楽しめるため県外からのファンも急増中です。</p>
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge" style="background:#8e44ad;">車で30分</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-hot-tub"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-water" style="color:#3498db;"></i> 榊原温泉（さかきばらおんせん）</h4>
+                        <p>清少納言が「枕草子」で讃えた日本三名泉の一つ。トロトロの肌触りの「美肌の湯」として有名です。日々の臨床業務や学会の疲れを、極上の湯で癒してください。</p>
+                    </div>
+                </div>
 
-                <h4 style="margin-top: 25px;">🐷 特産松阪豚（まつさかぶた）</h4>
-                <p>牛や鶏だけでなく、実は豚肉も絶品です。<br>
-                厳選された環境で育てられた松阪豚は、臭みがなく、つきたての餅のような良質な脂の甘みが特徴。<br>
-                とんかつや豚しゃぶでぜひご賞味ください。</p>
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge" style="background:#e67e22;">電車で約20分</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-torii-gate"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-sun" style="color:#e67e22;"></i> 伊勢神宮 ＆ おかげ横丁</h4>
+                        <p>日本人の心のふるさと、お伊勢さん。内宮・外宮の参拝後は、おかげ横丁で「赤福」や「伊勢うどん」を食べ歩き。松阪駅から乗り換えなしでアクセス可能です。</p>
+                    </div>
+                </div>
 
-                <h4 style="margin-top: 25px;">🍱 名物駅弁「モー太郎弁当」</h4>
-                <p>帰りの電車のお供におすすめ！<br>
-                フタを開けると「ふるさと」のメロディが流れる、インパクト抜群の牛型容器に入ったすき焼き弁当です。<br>
-                松阪駅の駅弁売店「あら竹」で購入できます。</p>
-            </div>
-        </section>
-
-        <!-- ⑤ 観光スポット -->
-        <section id="sightseeing" class="guide-section">
-            <h3><i class="fas fa-camera-retro"></i> 松阪・周辺エリアの観光スポット</h3>
-            <div class="guide-content">
-                <p style="margin-bottom: 20px;">会場のある松阪市中心部は、商都「豪商のまち」として栄えた歴史あるエリアです。<br>
-                学会の空き時間を利用して、徒歩圏内でも十分に歴史探訪をお楽しみいただけます。</p>
-
-                <h4>🌿 VISON（ヴィソン）<span style="font-size: 0.8rem; background: var(--accent-color); color: #fff; padding: 2px 8px; border-radius: 4px; margin-left: 10px; vertical-align: middle;">南エリア（多気町）</span></h4>
-                <p>松阪市の南隣、多気町にある日本最大級の商業リゾート施設です。<br><br>
-                三重の豊かな食材を味わえる飲食店や、マルシェ、温浴施設などが広大な敷地に集結しています。<br>
-                松阪駅からも直通バスが運行されており（約40分）、車なら松阪ICから約15分とアクセスも良好です。</p>
-
-                <h4 style="margin-top: 25px;">🏯 松坂城跡（松阪公園）</h4>
-                <p>天正16年（1588年）、蒲生氏郷によって築かれた名城の跡。<br>
-                現在は建造物は残っていませんが、野面積み（のづらづみ）と呼ばれる豪壮な石垣が当時の面影を強く残しています。<br>
-                高台にあるため松阪市街を一望でき、会場からも徒歩圏内です。</p>
-
-                <h4 style="margin-top: 25px;">🏘️ 御城番屋敷（ごじょうばんやしき）</h4>
-                <p>松坂城跡のすぐ裏手にある、江戸時代末期（1863年）に建てられた紀州藩士の武家屋敷。<br>
-                石畳の両側に槇（まき）の生垣が続く美しい景観は、国指定重要文化財に指定されています。<br>
-                現在も実際に人が住んでいる非常に珍しい文化財であり、一部は無料で内部見学が可能です。</p>
-
-                <h4 style="margin-top: 25px;">💴 豪商の館（旧長谷川治郎兵衛邸 など）</h4>
-                <p>江戸時代に江戸（東京）に店を構え、大成功を収めた松阪商人（伊勢商人）の本宅。<br>
-                広大な敷地に立つ立派な建物、大金庫、そして手入れの行き届いた美しい回遊式日本庭園などから、当時の松阪の圧倒的な財力を体感できます。</p>
-
-                <h4 style="margin-top: 25px;">📜 本居宣長記念館・鈴屋（すずのや）</h4>
-                <p>「古事記伝」で知られる江戸時代の国学者・本居宣長。<br>
-                記念館では彼の直筆原稿や遺品を展示しています。<br>
-                また、隣接する松坂城跡内には彼が暮らした旧宅「鈴屋」が移築保存されており、二階の書斎も見学できます。</p>
-
-                <h4 style="margin-top: 25px;">👘 松阪もめん手織りセンター</h4>
-                <p>「松阪嶋（まつさかじま）」と呼ばれる粋な藍色の縞模様が特徴の伝統工芸「松阪もめん」。<br>
-                江戸の庶民を熱狂させ、歌舞伎役者も愛用したと言われるこの織物の機織り体験（要予約）や、お土産にぴったりの小物・反物の購入が可能です。</p>
-
-                <div style="margin-top: 30px; text-align: center;">
-                    <a href="https://www.matsusaka-kanko.com/" target="_blank" class="btn-sub" style="padding: 12px 30px; font-size: 1rem;"><i class="fas fa-external-link-alt"></i> 松阪市観光協会 公式サイトを見る</a>
+                <div class="tourist-card">
+                    <div class="tourist-img">
+                        <span class="tourist-badge" style="background:#e67e22;">電車で約40分</span>
+                        <div class="tourist-img-placeholder"><i class="fas fa-fish-fins"></i></div>
+                    </div>
+                    <div class="tourist-content">
+                        <h4><i class="fas fa-child" style="color:#16a085;"></i> 鳥羽・志摩（水族館やリゾート）</h4>
+                        <p>ご家族同伴ならこちら！飼育種類数日本一の「鳥羽水族館」や、異国情緒あふれる「志摩スペイン村」、美しい英虞湾の絶景など、大人から子供まで大満足のエリアです。</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -245,9 +349,10 @@
         <div class="footer-container">
             <div class="footer-info">
                 <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
-                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>                
-                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室</p>
-                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科</p>
+                <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
+                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>
+                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室 内</p>
+                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科 内</p>
                 <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>
             </div>
             <div class="footer-links">
@@ -260,7 +365,7 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <small>Copyright &copy; 2027 The 16th OR-CET Information Exchange Meeting. All Rights Reserved.</small>
+            <small>Copyright © 2027 The 16th OR-CET Information Exchange Meeting. All Rights Reserved.</small>
         </div>
     </footer>
 

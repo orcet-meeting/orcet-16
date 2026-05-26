@@ -9,6 +9,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* PDFリンクなどの補足ボタン用 */
+        .pdf-link-btn {
+            display: inline-block;
+            background: #f39c12;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .pdf-link-btn:hover {
+            background: #d68910;
+        }
+        .guide-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        .guide-content li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .sub-heading {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -21,7 +56,7 @@
                 <ul class="nav-links">
                     <li><a href="index.html">開催概要</a></li>
                     <li><a href="greeting.html">ご挨拶</a></li>
-                    <li><a href="sankasya-annai.html">参加者案内</a></li>
+                    <li><a href="sankasya-annai.html" class="active">参加者案内</a></li>
                     <li><a href="program.html">プログラム</a></li>
                     <li><a href="guidelines.html">座長・発表者へ</a></li>
                     <li><a href="abstract-submission.html">演題登録</a></li>
@@ -32,10 +67,9 @@
         </div>
     </header>
 
-    <main class="container">
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
         <h2 class="section-title">参加者へのご案内とお願い</h2>
 
-        <!-- 会場情報はシンプルにし、詳細ページへの導線を作る -->
         <section class="guide-section">
             <h3><i class="fas fa-calendar-alt"></i> 会期・会場（現地開催）</h3>
             <div class="guide-content">
@@ -48,14 +82,41 @@
         </section>
 
         <section class="guide-section">
-            <h3><i class="fas fa-ticket-alt"></i> 参加登録・受付</h3>
-            <div class="notice-box urgent">
-                <p><i class="fas fa-exclamation-triangle"></i> <strong>現地会場での参加費支払い窓口はございません。</strong></p>
-                <p>本学会の参加には、<strong>Peatixでのオンライン参加登録</strong>が必須となります。必ず事前に手続きを行った上で会場へお越しください。</p>
-            </div>
+            <h3><i class="fas fa-user-check"></i> 参加資格</h3>
             <div class="guide-content">
-                <h4>当日の受付について</h4>
-                <p>Peatixの<strong>QRコード電子チケット</strong>をご準備ください。アプリまたはスマートフォンのブラウザ画面を提示してください。※印刷持参も可能です。</p>
+                <p>手術室業務に関わる、または興味のある臨床工学技士の方であれば、どなたでもお申し込みいただけます。</p>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h3><i class="fas fa-ticket-alt"></i> 参加登録・受付</h3>
+            <div class="guide-content">
+                <p><strong>【参加登録期間】</strong> 準備中</p>
+                <p><strong>【参加費】</strong> 準備中</p>
+                
+                <h4 class="sub-heading">参加登録方法</h4>
+                <p>Webサービス「Peatix (Peatix Japan 株式会社)」を利用した事前申込になります。<br>
+                当日申込も受付いたしますが、円滑な運営のために事前申込にご協力いただくようお願いいたします。</p>
+            </div>
+            
+            <div class="notice-box urgent" style="margin-top: 15px;">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>電話、FAXでのお申込み、および当日の現金払いは一切お受け致しません。</strong></p>
+                <p>必ず事前にPeatixでのオンライン手続き、または当日のオンライン決済を行った上で受付へお越しください。</p>
+            </div>
+            
+            <div class="guide-content" style="margin-top: 20px; text-align: center;">
+                <a href="registration.html" style="background: var(--accent-color); color: #fff; padding: 12px 30px; border-radius: 50px; display: inline-block; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s;"><i class="fas fa-user-plus" style="margin-right: 8px;"></i> 参加登録ページへ進む</a>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h3><i class="fas fa-book-open"></i> プログラム抄録集（Web抄録）</h3>
+            <div class="guide-content">
+                <p>当日、<strong>プログラム抄録集（冊子体）のご用意はございません</strong>ので、ご了承ください。<br>
+                本ホームページ上にて「Web抄録」を公開予定ですので、ご自身の端末からそちらをご利用ください。</p>
+            </div>
+            <div class="notice-box" style="background: #fdf2e9; border-left-color: #f39c12; margin-top: 15px;">
+                <p style="color: #d68910; font-weight: bold; margin: 0;"><i class="fas fa-key"></i> Web抄録の閲覧にはパスワードが必要です。準備が整いましたらパスワードは参加申込者にお知らせいたします。</p>
             </div>
         </section>
 
@@ -71,23 +132,51 @@
         </section>
 
         <section class="guide-section">
-            <h3><i class="fas fa-user-shield"></i> 会場内でのお願い</h3>
-            <div class="notice-box danger">
+            <h3><i class="fas fa-user-shield"></i> 会場内でのお願い・ルール</h3>
+            
+            <div class="guide-content">
+                <h4 class="sub-heading"><i class="fas fa-utensils"></i> 会場内での飲食について</h4>
+                <p>会場都合により、<strong>ホール内は原則飲食禁止</strong>となっております。<br>
+                ペットボトル等（蓋が閉まるもの）の持ち込みは認められておりますが、床にこぼす恐れのあるものは控えてください。お食事等の飲食は、基本的にホール外の指定スペースにてお願いいたします。</p>
+
+                <h4 class="sub-heading"><i class="fas fa-mobile-alt"></i> 携帯電話・撮影等の禁止行為</h4>
+                <ul>
+                    <li>会場内での携帯電話による通話はご遠慮ください。電源をお切りいただくか、マナーモードに設定してご使用ください。</li>
+                    <li>会場内での<strong>録音・撮影・録画（スライドのカメラ撮影含む）は固くお断りいたします。</strong></li>
+                </ul>
+
+                <h4 class="sub-heading"><i class="fas fa-smoking-ban"></i> 敷地内および周辺での禁煙について</h4>
+                <p><strong>会場敷地内は原則禁煙です。</strong><br>
+                また、センターがある本町周辺は、「松阪市みんなでまちをきれいにする条例」に基づく<strong>路上喫煙禁止区域</strong>に指定されており、屋外の道路や公共スペースでの喫煙も禁止されています。</p>
+                <ul>
+                    <li><strong>周辺道路での禁止行為：</strong> センター周辺の道路や広場での喫煙（歩きたばこ、立ち止まっての喫煙、自転車等に乗車中の喫煙を含む）は条例違反となります。</li>
+                    <li><strong>禁止区域外でのマナー：</strong> 禁止区域に指定されていない場所であっても、屋外で喫煙する場合は携帯灰皿の所持が義務付けられています。</li>
+                </ul>
+                <a href="https://www.city.matsusaka.mie.jp/uploaded/attachment/91005.pdf" target="_blank" class="pdf-link-btn"><i class="fas fa-file-pdf"></i> 松阪市路上喫煙禁止区域図(PDF)</a>
+
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                    <strong>【周辺の喫煙所を探すには】</strong><br>
+                    センターから少し離れた松坂城跡周辺などには、市が指定した公衆喫煙場所が数箇所設置されています。現在地から一番近い喫煙所や、喫煙可能な飲食店を探す場合は、「CLUB JT 喫煙所MAP」などの外部ナビゲーションツールを利用すると便利です。
+                </p>
+            </div>
+
+            <div class="notice-box danger" style="margin-top: 20px;">
                 <ul class="dot-list" style="margin-bottom: 0;">
-                    <li>会場内での<strong>写真・ビデオ撮影、録音は固くお断りいたします。</strong></li>
-                    <li>オンデマンド配信動画やスライド等の二次利用、キャプチャー行為は一切禁止です。</li>
+                    <li>他の参加者のご迷惑となる行為を発見した場合、ご退場いただく場合がございます。ルールとマナーを守ってのご参加をお願いいたします。</li>
                 </ul>
             </div>
         </section>
+
     </main>
 
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-info">
                 <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
+                <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
                 <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>                
-                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室</p>
-                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科</p>
+                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室 内</p>
+                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科 内</p>
                 <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>
             </div>
             <div class="footer-links">

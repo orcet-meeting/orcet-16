@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web展示ブース | 第16回 手術室臨床工学技士 OR-CET情報交換会</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .exhibition-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 80px 20px; text-align: center; color: #fff; margin-bottom: 40px; }
+        .exhibition-hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; letter-spacing: 0.05em; }
+        .exhibition-hero p { color: #94a3b8; font-size: 1.1rem; }
+        .exhibition-intro { text-align: center; max-width: 800px; margin: 0 auto 40px; padding: 0 20px; }
+        .exhibition-intro h2 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px; }
+        .exhibition-intro p { color: #444; line-height: 1.8; font-size: 1.05rem; }
+
+        .exhibition-index { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 60px; border: 1px solid #e2e8f0; scroll-margin-top: 100px; }
+        .exhibition-index h3 { text-align: center; color: var(--primary-color); margin-bottom: 20px; font-size: 1.2rem; border: none; }
+        .index-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .index-item { background: #f8fafc; border: 1px solid #cbd5e1; color: #334155; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease; }
+        .index-item i { margin-right: 5px; color: var(--accent-color); }
+        .index-item:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        .company-showcase { margin-bottom: 60px; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #f1f5f9; scroll-margin-top: 100px; }
+        .company-header { background: #f8fafc; padding: 20px 30px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; }
+        .company-header h3 { font-size: 1.5rem; color: var(--primary-color); margin: 0; display: flex; align-items: center; }
+        .company-logo-area { background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; height: 60px; width: 180px; display: flex; align-items: center; justify-content: center; }
+        .company-logo-area img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .company-body { padding: 40px 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .company-info h4 { font-size: 1.2rem; color: #334155; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); display: inline-block; }
+        .company-info p { line-height: 1.8; color: #444; margin-bottom: 20px; }
+        .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; }
+        .feature-list li { position: relative; padding-left: 25px; margin-bottom: 10px; line-height: 1.6; color: #333; }
+        .feature-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 2px; color: var(--accent-color); }
+        
+        .company-image { background: #f1f5f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; height: 100%; min-height: 250px; color: #94a3b8; border: 2px dashed #cbd5e1; overflow: hidden; }
+        .company-image i { font-size: 4rem; margin-bottom: 15px; display: block; }
+        .company-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+        
+        .btn-visit { display: inline-block; background: #fff; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; margin-right: 10px; margin-bottom: 10px; }
+        .btn-visit:hover { background: var(--primary-color); color: #fff; }
+        
+        .btn-pdf { display: inline-block; background: #fff; color: #d97706; border: 2px solid #d97706; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; margin-bottom: 10px; }
+        .btn-pdf:hover { background: #d97706; color: #fff; }
+        .btn-pdf i { margin-right: 5px; }
+
+        .back-to-index { display: block; text-align: right; padding: 15px 30px; background: #f8fafc; border-top: 1px solid #e2e8f0; color: var(--primary-color); font-size: 0.95rem; font-weight: 700; text-decoration: none; transition: 0.3s; }
+        .back-to-index:hover { background: #f1f5f9; color: var(--accent-color); }
+        .back-to-index i { margin-right: 8px; }
+
+        @media (max-width: 768px) {
+            .company-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .company-body { grid-template-columns: 1fr; padding: 25px 20px; }
+            .company-image { min-height: 200px; }
+            .index-grid { gap: 8px; }
+            .index-item { font-size: 0.85rem; padding: 8px 15px; }
+            .back-to-index { text-align: center; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <a href="index.html">第16回 手術室臨床工学技士 OR-CET情報交換会</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">開催概要</a></li>
+                    <li><a href="greeting.html">ご挨拶</a></li>
+                    <li><a href="sankasya-annai.html">参加者案内</a></li>
+                    <li><a href="program.html">プログラム</a></li>
+                    <li><a href="guidelines.html">座長・発表者へ</a></li>
+                    <li><a href="abstract-submission.html">演題登録</a></li>
+                    <li><a href="venue.html">会場・周辺</a></li>
+                    <li><a href="registration.html" class="btn-register">参加登録</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="exhibition-hero">
+            <div class="container">
+                <h1>Web Exhibition</h1>
+                <p>協賛企業オンライン展示ブース</p>
+            </div>
+        </section>
+
+        <section class="exhibition-intro">
+            <h2>臨床の課題を、企業の技術で解決する。</h2>
+            <p>
+                医療技術の高度化に伴い、手術室における臨床工学技士の役割は「機器の点検」から「手術環境全体のマネジメント」へと進化しています。<br>
+                本展示ブースでは、現場の課題を解決し、私たちと共に「次世代の手術室」を創造する協賛企業の皆様のソリューションをご紹介します。
+            </p>
+        </section>
+
+        <div class="container">
+
+            <div id="company-index" class="exhibition-index">
+                <h3><i class="fas fa-search"></i> 出展企業一覧</h3>
+                <div class="index-grid">
+                    <a href="#sponsor-awl" class="index-item"><i class="fas fa-building"></i> エア・ウォーター・リンク</a>
+                    <a href="#sponsor-ebmc" class="index-item"><i class="fas fa-building"></i> イービーエム</a>
+                    <a href="#sponsor-cosmos" class="index-item"><i class="fas fa-building"></i> コスモスシステム</a>
+                    <a href="#sponsor-takarabelmont" class="index-item"><i class="fas fa-building"></i> タカラベルモント</a>
+                    <a href="#sponsor-terumo" class="index-item"><i class="fas fa-building"></i> テルモ</a>
+                    <a href="#sponsor-nipro" class="index-item"><i class="fas fa-building"></i> ニプロ</a>
+                    <a href="#sponsor-miekinzoku" class="index-item"><i class="fas fa-building"></i> 三重金属工業</a>
+                </div>
+            </div>
+            
+            <div id="sponsor-awl" class="company-showcase">
+                <div class="company-header">
+                    <h3>エア・ウォーター・リンク株式会社</h3>
+                    <div class="company-logo-area">
+                        <img src="images/sponsor_awl.png" alt="エア・ウォーター・リンク">
+                    </div>
+                </div>
+                <div class="company-body">
+                    <div class="company-info">
+                        <h4>あらゆる可能性をつなぐ総合医療パートナー</h4>
+                        <p>総合病院向けの高度な医療機器販売から、滅菌代行サービス、さらには循環器科・心臓血管外科領域の専門機器まで幅広く提供しています。<br>
+                        時にはエア・ウォーターグループのスケールメリットを最大限に活かし、大型医療機器の据付から手術室・ICU等の設計・施工に至るまでトータルでプロデュース。社名である「リンク＝つなげる」の通り、専門性と柔軟性を兼ね備え、医療現場の安全と安心を総合的に支えます。</p>
+                        <ul class="feature-list">
+                            <li>循環器・心臓血管外科領域における専門性の高い医療機器の提供</li>
+                            <li>グループの総合力を活かした手術室・ICU等の大規模な設計・施工</li>
+                            <li>医療機器の販売から滅菌代行まで、安全を支えるトータルサポート</li>
+                        </ul>
+                        <a href="https://www.awlink.co.jp/" target="_blank" class="btn-visit">公式サイトを見る <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="company-image" style="border: none; background: transparent;">
+                        <img src="images/exhibition_awl.jpg" alt="エア・ウォーター・リンク 手術設備写真">
+                    </div>
+                </div>
+                <a href="#company-index" class="back-to-index"><i class="fas fa-level-up-alt"></i> 出展企業一覧（目次）へ戻る</a>
+            </div>
+
+            <div id="sponsor-ebmc" class="company-showcase">
+                <div class="company-header">
+                    <h3>イービーエム株式会社</h3>
+                    <div class="company-logo-area">
+                        <img src="images/sponsor_ebmc.png" alt="イービーエム">
+                    </div>
+                </div>
+                <div class="company-body">
+                    <div class="company-info">
+                        <h4>手技の「質」を高め、CEの職能向上を牽引する</h4>
+                        <p>高度な生体再現性を持つ血管モデルと、心拍動下での吻合訓練を可能にするシミュレータを提供し、臨床現場に出る前の「質の高い反復練習」を実現します。<br>
+                        特筆すべきは、<strong>臨床工学技士の「告示研修」で使用されるシミュレータを全て同社が手掛けている</strong>という点です。私たちの職能拡大と技術向上に最も深く関わり、チーム医療におけるCEの存在価値を高める強力なパートナー企業です。</p>
+                        <ul class="feature-list">
+                            <li>臨床工学技士「告示研修」のシミュレータを全面プロデュース</li>
+                            <li>ヒト組織の弾性・粘性を極限まで再現した血管モデル「YOUCAN」</li>
+                            <li>手技評価の客観化を可能にする拍動シミュレータ「BEAT」</li>
+                        </ul>
+                        <a href="https://ebmc.jp/" target="_blank" class="btn-visit">公式サイトを見る <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="company-image" style="border: none; background: transparent;">
+                        <img src="images/exhibition_ebmc.jpg" alt="イービーエム シミュレータ製品写真">
+                    </div>
+                </div>
+                <a href="#company-index" class="back-to-index"><i class="fas fa-level-up-alt"></i> 出展企業一覧（目次）へ戻る</a>
+            </div>
+
+            <div id="sponsor-cosmos" class="company-showcase">
+                <div class="company-header">
+                    <h3>コスモスシステム株式会社</h3>
+                    <div class="company-logo-area">
+                        <img src="images/sponsor_cosmosystem.png" alt="コスモスシステム">
+                    </div>
+                </div>
+                <div class="company-body">
+                    <div class="company-info">
+                        <h4>地域の医療を支える、柔軟な機器管理システム</h4>
+                        <p>地元・三重県津市に拠点を置くコスモスシステム株式会社は、医療機関の「持続的な医療機器管理体制の構築」をシステム面から強力にサポートしています。<br>
+                        主力製品である医療機器管理システム<strong>「C-SerKiKi（シーサー・キキ）」</strong>は、専用サーバを必要としないクラウド型Webアプリケーションです。機器の所在をリアルタイムに可視化し、小規模クリニックから総合病院まで、施設ごとの運用に寄り添ったミニマム構成からの導入が可能です。</p>
+                        <ul class="feature-list">
+                            <li>初期費用を抑え、必要機能だけを選べるミニマム構成導入</li>
+                            <li>修理記録の一元管理と、機器の所在のリアルタイム可視化</li>
+                            <li>監査対応に必要な情報をスムーズに抽出・統合管理</li>
+                        </ul>
+                        <div>
+                            <a href="https://cosmossystem.co.jp/" target="_blank" class="btn-visit">公式サイトを見る <i class="fas fa-external-link-alt"></i></a>
+                            <a href="pdf/c-serkiki.pdf" target="_blank" class="btn-pdf"><i class="fas fa-file-pdf"></i> 製品カタログ (PDF)</a>
+                        </div>
+                    </div>
+                    <div class="company-image" style="border: none; background: transparent;">
+                        <img src="images/exhibition_cosmos.jpg" alt="C-SerKiKi システム操作画面">
+                    </div>
+                </div>
+                <a href="#company-index" class="back-to-index"><i class="fas fa-level-up-alt"></i> 出展企業一覧（目次）へ戻る</a>
+            </div>
+
+            <div id="sponsor-takarabelmont" class="company-showcase">
+                <div class="company-header">
+                    <h3>タカラベルモント株式会社</h3>
+                    <div class="company-logo-area">
+                        <img src="images/sponsor_takarabelmont.png" alt="タカラベルモント">
+                    </div>
+                </div>
+                <div class="company-body">
+                    <div class="company-info">
+                        <h4>術者の疲労を軽減する、人間工学に基づいた手術台</h4>
+                        <p>理美容分野で培われた「人が人をケアする空間」のノウハウ。その究極の人間工学（エルゴノミクス）に基づく設計思想と、過酷な医療現場のニーズに応える高い耐久性を融合させたのがタカラベルモントの手術台です。<br>
+                        術者の疲労を極限まで軽減し、長時間のオペにおける手術精度を力強くサポート。各診療科目の特性に合わせて最適化された機能美が、チーム医療のポテンシャルを最大限に引き出します。</p>
+                        <ul class="feature-list">
+                            <li>理美容分野で培われた極めて高い人間工学（エルゴノミクス）設計</li>
+                            <li>過酷な医療現場のニーズに応える、卓越した耐久性と安定性</li>
+                            <li>各診療科の術式に最適化され、術者の疲労軽減と高い精度をサポート</li>
+                        </ul>
+                        <a href="https://www.takarabelmont.co.jp/" target="_blank" class="btn-visit">公式サイトを見る <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="company-image" style="border: none; background: transparent;">
+                        <img src="images/exhibition_takarabelmont.jpg" alt="タカラベルモント 手術台" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="text-align: center; display: none;">
+                            <i class="fas fa-procedures"></i>
+                            <p>Ergonomic Operating Table</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#company-index" class="back-to-index"><i class="fas fa-level-up-alt"></i> 出展企業一覧（目次）へ戻る</a>
+            </div>
+
+            <div id="sponsor-terumo" class="company-showcase">
+                <div class="company-header">
+                    <h3>テルモ株式会社</h3>
+                    <div class="company-logo-area">
+                        <img src="images/sponsor_terumo.png" alt="テルモ">
+                    </div>
+                </div>
+                <div class="company-body">
+                    <div class="company-info">
+                        <h4>血管内治療の、新たな標準</h4>
+                        <p>低侵襲治療の最前線を走るステントグラフトや人工血管。周術期管理においてCEが直面する多彩な症例に対し、確かな品質と豊富なラインナップで寄り添い続けます。</p>
+                        <ul class="feature-list">
+                            <li>高度な追従性と長期成績を実現する次世代ステントグラフト</li>
+                            <li>耐久性と操作性を両立した高度な人工血管</li>
+                            <li>手技時間の短縮と患者様の術後早期回復への貢献</li>
+                        </ul>
+                        <a href="https://www.terumo.co.jp/" target="_blank" class="btn-visit">公式サイトを見る <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="company-image">
+                        <div style="text-align: center;">
+                            <i class="fas fa-wave-square"></i>
+                            <p>Vascular Intervention</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#company-index" class="back-to-index"><i class="fas fa-level-up-alt"></i> 出展企業一覧（目次）へ戻る</a>
+            </div>
+
+            <div id="sponsor-nipro" class="company-showcase">
+                <div class="company-header">
+                    <h3>ニプロ株式会社</h3>
+                    <div class="company-logo-area">
+                        <img src="images/sponsor_nipro.png" alt="ニプロ">
+                    </div>
+                </div>
+                <div class="company-body">
+                    <div class="company-info">
+                        <h4>医療従事者の、安全を守る</h4>
+                        <p>手術室での針刺し・切創事故ゼロを目指すSandel（サンデル）安全製品ラインを提供。スタッフの安全を守ることが、質の高いチーム医療の確固たる土台となります。</p>
+                        <ul class="feature-list">
+                            <li>鋭利器具の受け渡しを非接触で行うトランスファートレー</li>
+                            <li>長時間の立ち作業の疲労を軽減するエルゴノミクスマット</li>
+                            <li>医療現場のヒューマンエラーを防ぐ物理的な安全対策</li>
+                        </ul>
+                        <a href="https://www.nipro.co.jp/" target="_blank" class="btn-visit">公式サイトを見る <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="company-image">
+                        <div style="text-align: center;">
+                            <i class="fas fa-shield-halved"></i>
+                            <p>Safety & Ergonomics</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#company-index" class="back-to-index"><i class="fas fa-level-up-alt"></i> 出展企業一覧（目次）へ戻る</a>
+            </div>
+
+            <div id="sponsor-miekinzoku" class="company-showcase">
+                <div class="company-header">
+                    <h3>三重金属工業</h3>
+                    <div class="company-logo-area">
+                        <img src="images/sponsor_miekinzoku.png" alt="三重金属工業">
+                    </div>
+                </div>
+                <div class="company-body">
+                    <div class="company-info">
+                        <h4>臨床工学技士の声をカタチにする医工連携ブランド</h4>
+                        <p>高度な精密金属加工技術をベースに、医工連携によって医療・介護現場のリアルな課題を解決する自社ブランド<strong>「WILLMIE（ウィルミー）」</strong>を展開しています。<br>
+                        製品開発には、臨床工学技士の意見をダイレクトに反映。ドレインバッグホルダーやアンギオ検査台用心臓マッサージボードなど、現場の「あったらいいな」を確かな品質でカタチにし、安全で効率的なチーム医療の環境を根底から支えます。</p>
+                        <ul class="feature-list">
+                            <li>医療・介護現場の課題を解決する自社ブランド「WILLMIE」の展開</li>
+                            <li>ドレインバッグホルダーなど、CEのアイデアをダイレクトに反映</li>
+                            <li>精密な金属加工技術と医工連携による、安全性・利便性を追求した製品開発</li>
+                        </ul>
+                        <a href="https://www.miekin.co.jp/" target="_blank" class="btn-visit">公式サイトを見る <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="company-image">
+                        <div style="text-align: center;">
+                            <i class="fas fa-handshake"></i>
+                            <p>Medical-Engineering Collaboration</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#company-index" class="back-to-index"><i class="fas fa-level-up-alt"></i> 出展企業一覧（目次）へ戻る</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
+                <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
+                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>
+                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室 内</p>
+                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科 内</p>
+                <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>
+            </div>
+            <div class="footer-links">
+                <div class="sns-icons">
+                    <a href="https://line.me/R/ti/p/@359yfnlu" target="_blank" class="sns-icon line" title="LINE"><i class="fab fa-line"></i></a>
+                    <a href="https://www.instagram.com/orcet_jyouhou?igsh=NG1iZGs3eHVpaXp5" target="_blank" class="sns-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1Dc1HNvj1V/?mibextid=wwXIfr" target="_blank" class="sns-icon fb-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <a href="links.html" class="related-link">関連リンク</a>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <small>Copyright © 2027 The 16th OR-CET Information Exchange Meeting. All Rights Reserved.</small>
+        </div>
+    </footer>
+    <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
+    <script src="js/main.js"></script>
+</body>
+</html>

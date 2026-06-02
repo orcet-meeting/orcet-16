@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OR-CETの呟き（コラム一覧） | 第16回 手術室臨床工学技士 OR-CET情報交換会</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .magazine-heading { text-align: center; margin-bottom: 40px; padding: 25px; background: rgba(243, 156, 18, 0.05); border-radius: 12px; border: 1px solid rgba(243, 156, 18, 0.15); }
+        .magazine-heading h2 { font-size: 2.2rem; color: var(--primary-color); font-weight: 800; margin-bottom: 15px; letter-spacing: 0.05em; }
+        .magazine-heading p { font-size: 1.2rem; color: #e74c3c; font-weight: 700; margin-bottom: 10px; }
+        .magazine-heading .sub-text { font-size: 1rem; color: #334155; font-weight: 400; line-height: 1.8; max-width: 950px; margin: 15px auto 0; text-align: left; }
+
+        /* 執筆者リンクメニュー */
+        .author-menu { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 50px; }
+        .author-menu a { display: inline-flex; align-items: center; background: #fff; border: 1px solid #cbd5e1; padding: 10px 20px; border-radius: 50px; color: #334155; font-weight: bold; text-decoration: none; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .author-menu a i { margin-right: 8px; color: var(--accent-color); font-size: 1.2rem; }
+        .author-menu a:hover { border-color: var(--primary-color); color: var(--primary-color); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+        /* 新着記事カードグリッド */
+        .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .article-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s; display: flex; flex-direction: column; }
+        .article-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        
+        .article-meta { display: flex; justify-content: space-between; font-size: 0.85rem; color: #64748b; margin-bottom: 15px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 10px; }
+        .article-tag { background: #f8fafc; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px; color: #475569; font-weight: bold; }
+        
+        .article-title { font-size: 1.25rem; color: var(--primary-color); font-weight: 700; margin-bottom: 15px; line-height: 1.5; }
+        .article-snippet { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+        
+        .article-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+        .article-author { font-size: 0.85rem; color: #d35400; font-weight: bold; background: #fdf2e9; padding: 4px 10px; border-radius: 50px; }
+        .btn-readmore { display: inline-block; padding: 8px 20px; background: #fff; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
+        .btn-readmore:hover { background: var(--primary-color); color: #fff; }
+
+        @media (max-width: 768px) {
+            .article-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <a href="index.html">第16回 手術室臨床工学技士 OR-CET情報交換会</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">開催概要</a></li>
+                    <li><a href="greeting.html">ご挨拶</a></li>
+                    <li><a href="sankasya-annai.html">参加者案内</a></li>
+                    <li><a href="program.html">プログラム</a></li>
+                    <li><a href="guidelines.html">座長・発表者へ</a></li>
+                    <li><a href="abstract-submission.html">演題登録</a></li>
+                    <li><a href="venue.html">会場・周辺</a></li>
+                    <li><a href="registration.html" class="btn-register">参加登録</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        
+        <div class="magazine-heading">
+            <h2>OR-CETの呟き ＆ 現場の知恵袋</h2>
+            <p>〜 手術室マネジメントからDX、日常の臨床のヒントまで 〜</p>
+            <div class="sub-text">
+                本ページは、第16回大会を運営する当番幹事や実行委員メンバーが執筆する公式コラムです。日々の臨床業務、多職種連携、手術室マネジメント、低コード開発によるDXなど、現場のリアルな「気づきや知恵」を不定期に発信していきます。
+            </div>
+        </div>
+
+        <div class="author-menu">
+            <a href="column_yamaguchi.html"><i class="fas fa-user-tie"></i> 大会長：山口 翔 のコラム</a>
+            <a href="#"><i class="fas fa-user-nurse"></i> 副大会長 のコラム（準備中）</a>
+            <a href="#"><i class="fas fa-user-graduate"></i> プログラム委員 のコラム（準備中）</a>
+        </div>
+
+        <h3 style="color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-bottom: 25px;">新着コラム一覧</h3>
+
+        <div class="article-grid">
+            
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">ご挨拶・展望</span>
+                    <span>2026.05.29</span>
+                </div>
+                <h4 class="article-title">【第1声】手術室と地域をつなぐOR-CET 〜今大会のテーマに寄せて〜</h4>
+                <p class="article-snippet">第16回OR-CET情報交換会の当番幹事を務めさせていただきます、永井病院の山口です。今回の大会テーマを「手術室と地域をつなぐOR-CET」と掲げさせていただいた背景には、私たちを取り巻く環境の劇的な変化が…</p>
+                <div class="article-footer">
+                    <span class="article-author"><i class="fas fa-pen-nib"></i> 山口 翔</span>
+                    <a href="column_yamaguchi.html#column-01" class="btn-readmore">続きを読む <i class="fas fa-chevron-right" style="font-size: 0.8em;"></i></a>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">手術室DX・効率化</span>
+                    <span>2026.06.10</span>
+                </div>
+                <h4 class="article-title">臨床の「困った」を自分たちで形にする、GAS活用のすすめ</h4>
+                <p class="article-snippet">手術室のマネジメントにおいて、多くの技士長やマネージャーを悩ませるのが「情報共有のロス」や「シフト・評価業務の煩雑さ」。そこで提案したいのが、低コード開発（ローコード）による現場主導のDXです…</p>
+                <div class="article-footer">
+                    <span class="article-author"><i class="fas fa-pen-nib"></i> 山口 翔</span>
+                    <a href="column_yamaguchi.html#column-02" class="btn-readmore">続きを読む <i class="fas fa-chevron-right" style="font-size: 0.8em;"></i></a>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-meta">
+                    <span class="article-tag">医工連携・アイデア</span>
+                    <span>2026.08.05</span>
+                </div>
+                <h4 class="article-title">医工連携の種は手術室に落ちている 〜CEの気付きが医療を変える〜</h4>
+                <p class="article-snippet">「このコードの取り回し、もう少しなんとかならないか」…手術室で業務をこなすなかで私たちが抱く小さな不満やひらめき。実は、これらの一つひとつがすべて、新しい医療機器を生み出す医工連携の種に他なりません…</p>
+                <div class="article-footer">
+                    <span class="article-author"><i class="fas fa-pen-nib"></i> 山口 翔</span>
+                    <a href="column_yamaguchi.html#column-03" class="btn-readmore">続きを読む <i class="fas fa-chevron-right" style="font-size: 0.8em;"></i></a>
+                </div>
+            </div>
+
+            <div class="article-card" style="background: #f8fafc;">
+                <div class="article-meta">
+                    <span class="article-tag">タスクシェア</span>
+                    <span>2026.XX.XX</span>
+                </div>
+                <h4 class="article-title" style="color: #94a3b8;">【準備中】チーム医療の要として 〜タスクシェア成功の鍵〜</h4>
+                <p class="article-snippet" style="color: #94a3b8;">副大会長によるコラムを執筆中です。公開までしばらくお待ちください。</p>
+                <div class="article-footer">
+                    <span class="article-author" style="background: #e2e8f0; color: #64748b;"><i class="fas fa-pen-nib"></i> 副大会長</span>
+                    <span class="btn-readmore" style="border-color: #cbd5e1; color: #cbd5e1; cursor: not-allowed;">準備中</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
+                <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
+                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>
+                <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室 内</p>
+                <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科 内</p>
+                <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <small>Copyright &copy; 2027 The 16th OR-CET Information Exchange Meeting. All Rights Reserved.</small>
+        </div>
+    </footer>
+</body>
+</html>

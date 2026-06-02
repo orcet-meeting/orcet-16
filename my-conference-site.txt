@@ -1,0 +1,14 @@
+my-conference-site
+  ├── index.html           (開催概要)
+  ├── program.html         (プログラム)
+  ├── guidelines.html      (座長・発表者へ)
+  ├── registration.html    (参加登録)
+  ├── venue.html           (会場案内)
+  ├── local-guide.html     (周辺案内)
+  ├── links.html           (関連リンクSNS)
+  ├── css
+  │    └── style.css       (デザイン調整用)
+  ├── js
+  │    └── main.js         (GAS連携や共通パーツ読み込み用)
+  └── images
+       └── logo.png        (作成したかっこいいロゴ)

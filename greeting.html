@@ -184,6 +184,77 @@
             margin-bottom: 25px;
         }
 
+        /* 歴史ページへのカード型リンク */
+        .history-link-wrapper {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .history-card-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 100%);
+            border: 1px solid #e0eaf5;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 58, 125, 0.08);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .history-card-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+
+        .history-card-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 58, 125, 0.15);
+            background: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        .history-card-content {
+            text-align: left;
+        }
+
+        .history-en {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .history-ja {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .history-card-icon {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .history-card-link:hover .history-card-icon {
+            transform: translateX(5px);
+        }
+
         /* スマホ対応 */
         @media (max-width: 992px) {
             .greeting-flex, .greeting-block:nth-child(even) .greeting-flex {
@@ -204,6 +275,9 @@
             }
             .anchor-nav a {
                 text-align: center;
+            }
+            .history-card-link {
+                padding: 15px 25px;
             }
         }
         
@@ -312,6 +386,21 @@
 
                         <h4>結びに</h4>
                         <p>結びに、第16回OR-CET情報交換会の開催にあたり、世話人の永井病院 山口様をはじめ、関係各位に深く感謝申し上げます。本会のさらなる発展を祈念いたしまして、事務局長のあいさつとさせていただきます。</p>
+
+                        <!-- ▼▼ ここから追加: 歴史ページへのリンク ▼▼ -->
+                        <div class="history-link-wrapper">
+                            <a href="history.html" class="history-card-link">
+                                <div class="history-card-content">
+                                    <span class="history-en">HISTORY</span>
+                                    <span class="history-ja">これまでのOR-CETの歩み</span>
+                                </div>
+                                <div class="history-card-icon">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- ▲▲ ここまで追加 ▲▲ -->
+
                     </div>
                 </div>
             </div>
@@ -322,7 +411,9 @@
         <div class="footer-container">
             <div class="footer-info">
                 <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
-                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>                
+                <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
+                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>  
+                <p><strong>後援 :</strong> 三重県</p>              
                 <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室</p>
                 <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科</p>
                 <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>

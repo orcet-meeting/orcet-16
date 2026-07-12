@@ -13,7 +13,7 @@
 
     <style>
         /* -----------------------------------------------------
-           歴史・沿革ページ専用 プレミアム重厚デザイン
+           歴史・沿革ページ専用レイアウト（モダン＆クリーン）
            ----------------------------------------------------- */
         .history-container {
             padding-top: 50px;
@@ -53,11 +53,11 @@
             border: 1px solid #e2e8f0;
         }
         
-        /* 高級感のある飾り付き見出し */
+        /* 見出し装飾（テーマカラーを基調としたモダンデザイン） */
         .history-section h3 {
             font-size: 1.6rem;
-            color: var(--primary-color);
             font-weight: 800;
+            color: var(--primary-color);
             margin-bottom: 35px;
             padding-bottom: 15px;
             border-bottom: 2px solid #e2e8f0;
@@ -67,8 +67,8 @@
         }
         .history-section h3 i {
             margin-right: 12px;
-            color: var(--accent-color);
             font-size: 1.4rem;
+            color: var(--accent-color);
         }
         .history-section h3::after {
             content: '';
@@ -148,21 +148,169 @@
             margin-bottom: 0;
         }
 
-        /* 開催履歴テーブルの徹底美化 */
+        /* -----------------------------------------------------
+           より細かく正確な 8エリア ブロックマップ
+           ----------------------------------------------------- */
+        .map-section-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            background: #fdfdfd;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        
+        .map-visual {
+            flex: 1.5;
+            min-width: 320px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 4x4グリッドで日本の8地方を表現 */
+        .japan-block-map {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-areas:
+                ".        .        .        hokkaido"
+                ".        .        .        tohoku"
+                "chugoku  kinki    chubu    kanto"
+                "kyushu   shikoku  .        .";
+            gap: 12px;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .j-region {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 6px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80px;
+            transition: transform 0.2s ease;
+        }
+        .j-region:hover {
+            transform: translateY(-2px);
+        }
+        
+        .region-name {
+            font-weight: 800;
+            color: #475569;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+        .pref-list {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        /* エリア配置 */
+        .r-hokkaido { grid-area: hokkaido; }
+        .r-tohoku { grid-area: tohoku; }
+        .r-kanto { grid-area: kanto; }
+        .r-chubu { grid-area: chubu; }
+        .r-kinki { grid-area: kinki; }
+        .r-chugoku { grid-area: chugoku; }
+        .r-shikoku { grid-area: shikoku; }
+        .r-kyushu { grid-area: kyushu; }
+
+        /* ステータスカラー（タグを廃止し色と枠線でスマートに表現） */
+        .status-held {
+            background: rgba(30, 64, 175, 0.03);
+            border: 2px solid var(--primary-color);
+        }
+        .status-held .region-name, .status-held .pref-list {
+            color: var(--primary-color);
+        }
+
+        .status-current {
+            background: rgba(243, 156, 18, 0.08);
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.15);
+        }
+        .status-current .region-name {
+            color: #d97706;
+        }
+        .status-current .pref-list {
+            color: #b45309;
+            font-weight: 700;
+        }
+
+        .status-future {
+            background: #f1f5f9;
+            border: 2px dashed #94a3b8;
+        }
+        .status-future .region-name, .status-future .pref-list {
+            color: #475569;
+        }
+
+        /* マップの凡例 */
+        .map-legend {
+            flex: 1;
+            min-width: 250px;
+        }
+        .map-legend h4 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+            font-weight: 800;
+        }
+        .map-legend ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            line-height: 2.2;
+        }
+        .map-legend li {
+            font-size: 1rem;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .legend-box {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            margin-right: 12px;
+            display: inline-block;
+        }
+        .box-current { background: rgba(243, 156, 18, 0.2); border: 2px solid var(--accent-color); }
+        .box-held { background: rgba(30, 64, 175, 0.05); border: 2px solid var(--primary-color); }
+        .box-future { background: #f1f5f9; border: 2px dashed #94a3b8; }
+
+        /* -----------------------------------------------------
+           開催履歴テーブル＆スマホ対応（完全カード型）
+           ----------------------------------------------------- */
         .history-table-wrapper {
             width: 100%;
-            overflow-x: auto;
             margin-top: 25px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #cbd5e1;
         }
+        /* デスクトップ表示用テーブル */
         .history-table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
             font-size: 0.95rem;
-            min-width: 900px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            background: #fff;
         }
         .history-table th {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
@@ -180,18 +328,9 @@
             line-height: 1.7;
             vertical-align: middle;
         }
-        .history-table tr:last-child td {
-            border-bottom: none;
-        }
-        .history-table tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-        .history-table tr:hover {
-            background-color: #f1f5f9;
-            transition: background-color 0.15s ease;
-        }
+        .history-table tr:nth-child(even) { background-color: #f8fafc; }
+        .history-table tr:hover { background-color: #f1f5f9; transition: background-color 0.15s ease; }
 
-        /* 各列の幅・スタイリング微調整 */
         .col-num { font-weight: 800; color: var(--primary-color); text-align: center; width: 7%; white-space: nowrap; }
         .col-date { width: 15%; white-space: nowrap; font-weight: 700; color: #475569; }
         .col-theme { width: 38%; font-weight: 700; color: #1e293b; }
@@ -201,9 +340,58 @@
         @media (max-width: 992px) {
             .history-section { padding: 30px 20px; }
             .history-section h3 { font-size: 1.4rem; }
-            .official-mission { padding: 20px; }
-            .official-mission p { font-size: 1.1rem; }
-            .history-table th, .history-table td { padding: 14px 10px; font-size: 0.9rem; }
+            .map-section-inner { padding: 30px 20px; flex-direction: column; }
+            .map-visual { width: 100%; }
+        }
+
+        /* はみ出し防止：スマホ用 完全カード型レイアウト */
+        @media (max-width: 768px) {
+            .history-table-wrapper {
+                border: none;
+                box-shadow: none;
+                background: transparent;
+            }
+            .history-table { border: none; box-shadow: none; background: transparent; }
+            .history-table thead { display: none; }
+            .history-table, .history-table tbody, .history-table tr, .history-table td {
+                display: block; width: 100%;
+            }
+            .history-table tr {
+                margin-bottom: 20px;
+                background: #fff;
+                border: 1px solid #cbd5e1;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            }
+            .history-table td {
+                padding: 12px 15px;
+                text-align: right;
+                border-bottom: 1px dashed #e2e8f0;
+                position: relative;
+                padding-left: 90px;
+            }
+            .history-table td:last-child { border-bottom: none; }
+            .history-table td::before {
+                position: absolute;
+                left: 15px;
+                top: 12px;
+                font-weight: 800;
+                color: #64748b;
+                font-size: 0.85rem;
+            }
+            .history-table td:nth-child(1) { text-align: left; padding-left: 15px; background: #f8fafc; font-size: 1.1rem; border-bottom: 2px solid #e2e8f0; }
+            .history-table td:nth-child(1)::before { content: ""; }
+            .history-table td:nth-child(2)::before { content: "開催日"; }
+            .history-table td:nth-child(3)::before { content: "テーマ等"; text-align: left; }
+            .history-table td:nth-child(3) { text-align: left; }
+            .history-table td:nth-child(4)::before { content: "会場"; }
+            .history-table td:nth-child(5)::before { content: "当番幹事"; }
+            
+            /* スマホ時の今大会ハイライト */
+            .history-table tr.highlight-current td:nth-child(1) {
+                background: rgba(243, 156, 18, 0.1);
+                border-bottom: 2px solid var(--accent-color);
+            }
         }
     </style>
 </head>
@@ -240,7 +428,6 @@
         <section class="history-section">
             <h3><i class="fas fa-bullseye"></i> 趣旨・目的</h3>
             
-            <!-- 🌟 いただいた正式な目的文を絶対的理念として強調 -->
             <div class="official-mission">
                 <p>本会は臨床工学技士の手術室における業務の情報交換及び運営、並びにその普及につとめ、今日又将来において医療技術の進歩発展及び、学術文化の向上に寄与することを目的とする。</p>
             </div>
@@ -267,16 +454,59 @@
 
         <!-- 2. 情報交換会の歴史 -->
         <section class="history-section">
-            <h3><i class="fas fa-hourglass-half"></i> 情報交換会の歴史</h3>
+            <h3><i class="fas fa-project-diagram"></i> 情報交換会の歴史と広がり</h3>
             <div class="history-text-block">
                 <p>2010年に刈谷豊田総合病院にて「各施設における手術室業務の現状報告」をテーマに第1回が開催されました。当初は、手術室専属CEの役割や業務指針、直接介助業務の現状といった、手術室業務の基盤作りに関する情報交換が中心でした。</p>
                 <p>その後、愛知、京都、静岡、岐阜、三重など各地の医療機関や施設で継続的に開催され、時代とともにハイブリッド手術への対応、手術室マネジメントや専門制度の構築、最新の臨床現場に即したタスクシェアの議論へと発展を遂げました。近年ではWEB開催（Zoom）も柔軟に取り入れられています。</p>
                 <p>2024年の第14回大会は、「職域拡大×OR-CET」をテーマに中四国地方初となる岡山県で開催され、本会の地域的な広がりを示しました。続く2025年の第15回大会（テーマ：「雲外蒼天 〜拡充と挑戦の先に〜」）、2027年の第16回大会（テーマ：「手術室と地域をつなぐOR-CET ～地域医療を支える周術期マネジメントと臨床工学技士〜」）と、これまでの歩みを踏まえた地域医療への貢献や周術期全体を見渡すマネジメントへとさらに視野を広げています。</p>
                 <p>また、2028年には関東地方（東京都）での第17回開催も予定されており、全国規模での活発な情報交換とネットワーク構築が今後も期待されています。</p>
+                
+                <!-- インフォグラフィック風 ブロックマップ -->
+                <div class="map-section-inner">
+                    <div class="map-visual">
+                        <div class="japan-block-map">
+                            <!-- 8地方区分グリッド -->
+                            <div class="j-region r-hokkaido"><span class="region-name">北海道</span></div>
+                            <div class="j-region r-tohoku"><span class="region-name">東北</span></div>
+                            
+                            <div class="j-region r-kanto status-future">
+                                <span class="region-name">関東</span>
+                                <span class="pref-list">東京<br><span style="font-size:0.8em; font-weight:normal;">(次回予定)</span></span>
+                            </div>
+                            
+                            <!-- 三重を正確に「中部」へ配置 -->
+                            <div class="j-region r-chubu status-current">
+                                <span class="region-name">中部</span>
+                                <span class="pref-list">三重<span style="font-size:0.8em; font-weight:normal;">(今大会)</span><br>愛知・岐阜・静岡</span>
+                            </div>
+                            
+                            <div class="j-region r-kinki status-held">
+                                <span class="region-name">近畿</span>
+                                <span class="pref-list">大阪・京都</span>
+                            </div>
+                            
+                            <div class="j-region r-chugoku status-held">
+                                <span class="region-name">中国</span>
+                                <span class="pref-list">岡山</span>
+                            </div>
+                            
+                            <div class="j-region r-shikoku"><span class="region-name">四国</span></div>
+                            <div class="j-region r-kyushu"><span class="region-name">九州・沖縄</span></div>
+                        </div>
+                    </div>
+                    <div class="map-legend">
+                        <h4><i class="fas fa-map-marked-alt" style="margin-right: 10px;"></i>開催エリアの軌跡</h4>
+                        <ul>
+                            <li><span class="legend-box box-current"></span>今大会 ＆ 開催実績<br><span style="font-size: 0.85em; color: #64748b; margin-left: 28px; font-weight: normal;">（中部エリア：三重・愛知・岐阜・静岡）</span></li>
+                            <li><span class="legend-box box-held"></span>これまでの開催実績<br><span style="font-size: 0.85em; color: #64748b; margin-left: 28px; font-weight: normal;">（近畿エリア・中国エリア）</span></li>
+                            <li><span class="legend-box box-future"></span>次回開催予定<br><span style="font-size: 0.85em; color: #64748b; margin-left: 28px; font-weight: normal;">（関東エリア）</span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- 3. 開催履歴（西暦統一版） -->
+        <!-- 3. 開催履歴 -->
         <section class="history-section">
             <h3><i class="fas fa-list-ol"></i> 開催履歴</h3>
             <div class="history-table-wrapper">
@@ -390,7 +620,7 @@
                             <td class="col-leader">神倉 和見<br><span style="font-size:0.85em; color:#64748b;">（JCHO中京病院）</span></td>
                         </tr>
                         <!-- 🌟今大会 -->
-                        <tr style="background-color: rgba(243, 156, 18, 0.06); border-left: 4px solid var(--accent-color);">
+                        <tr class="highlight-current" style="background-color: rgba(243, 156, 18, 0.06); border-left: 4px solid var(--accent-color);">
                             <td class="col-num" style="color: var(--accent-color);">第16回</td>
                             <td class="col-date" style="color: var(--accent-color);">2027年2月14日</td>
                             <td class="col-theme" style="color: var(--primary-color);">手術室と地域をつなぐOR-CET<br>～地域医療を支える周術期マネジメントと臨床工学技士～</td>
@@ -417,6 +647,7 @@
                 <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
                 <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
                 <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>
+                <p><strong>後援 :</strong> 三重県</p>
                 <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室 内</p>
                 <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科 内</p>
                 <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>

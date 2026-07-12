@@ -53,14 +53,15 @@
                 </p>
             </div>
 
-            <!-- いただいたフォーム項目（一切変更なし） -->
+            <!-- いただいたフォーム項目 -->
             <form id="contactForm">
                 
                 <div class="form-group">
                     <label class="form-label" for="name">
                         お名前（氏名）<span class="required-tag">必須</span>
                     </label>
-                    <input type="text" id="name" name="name" placeholder="例：長井 太郎" required>
+                    <!-- 長井 太郎から松阪 太郎に変更 -->
+                    <input type="text" id="name" name="name" placeholder="例：松阪 太郎" required>
                 </div>
 
                 <div class="form-group">
@@ -74,7 +75,8 @@
                     <label class="form-label" for="email">
                         メールアドレス<span class="required-tag">必須</span>
                     </label>
-                    <input type="email" id="email" name="email" placeholder="例：taro.nagai@example.com" required>
+                    <!-- アドレスの例も松阪太郎に合わせて変更 -->
+                    <input type="email" id="email" name="email" placeholder="例：taro.matsusaka@example.com" required>
                 </div>
 
                 <div class="form-group">
@@ -106,7 +108,10 @@
         <div class="footer-container">
             <div class="footer-info">
                 <p><strong>主催 :</strong> 手術室臨床工学技士 OR-CET情報交換会</p>
-                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>                
+                <!-- 後援を3つに修正 -->
+                <p><strong>後援 :</strong> 公益社団法人 日本臨床工学技士会</p>
+                <p><strong>後援 :</strong> 一般社団法人 共益型三重県臨床工学技士会</p>
+                <p><strong>後援 :</strong> 三重県</p>                
                 <p><strong>大会事務局 :</strong> 医療法人 永井病院 臨床工学室</p>
                 <p><strong>運営事務局 :</strong> 医療法人豊田会 刈谷豊田総合病院 臨床工学科</p>
                 <p><a href="contact.html" style="font-weight: bold; text-decoration: underline;">お問い合わせフォーム</a></p>
@@ -125,7 +130,7 @@
         </div>
     </footer>
 
-    <!-- いただいたGAS送信用スクリプト（一切変更なし） -->
+    <!-- いただいたGAS送信用スクリプト -->
     <script>
         /* 【超重要】ここにGASのURLを貼り付けてください */
         const scriptUrl = 'https://script.google.com/macros/s/AKfycbzt5G-XMfjSHXh76N3i-akuQUyBoxvooRxO5zc6nObBXmnlCzRnwhaF6ZJZYOnJqnmv/exec';

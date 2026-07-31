@@ -4,11 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>演題登録 | 第16回 手術室臨床工学技士 OR-CET情報交換会</title>
+    <!-- 既存のCSSとフォント -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- フォーム周りのスタイリングのためにTailwind CSSを読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 全体の背景をおしゃれなドットパターンに（ページ全体のデザインを洗練） */
+        body {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        /* 既存のサイトデザインとTailwindが競合しないためのスコープ化と調整 */
+        .form-wrapper {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+        }
+        /* 入力フォーカス時のアニメーション */
+        .form-wrapper input:focus, .form-wrapper textarea:focus { transition: all 0.3s ease; }
+        
+        /* 案内文のリストスタイル */
+        .guideline-list li { margin-bottom: 0.5rem; }
+    </style>
 </head>
 <body>
 
@@ -32,19 +59,200 @@
         </div>
     </header>
 
-    <main class="container">
-        <h2 class="section-title">演題登録</h2>
-        <div class="info-box" style="background-color: #f8f9fa; border-left: 5px solid #0056b3; padding: 40px 20px; margin: 40px 0; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <i class="fas fa-bullhorn" style="font-size: 2.5rem; color: #0056b3;"></i>
+    <main class="container form-wrapper" style="padding-top: 40px; padding-bottom: 80px;">
+        <h2 class="section-title text-center text-3xl font-bold mb-10 text-slate-800">演題登録</h2>
+        
+        <!-- 演題募集のご案内 -->
+        <div class="glass-panel rounded-2xl p-8 md:p-10 mb-12 relative overflow-hidden">
+            <!-- 装飾用の背景カラーオブジェクト -->
+            <div class="absolute -top-10 -right-10 w-48 h-48 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+            <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-red-50 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+
+            <div class="relative">
+                <h3 class="text-xl font-bold text-blue-900 border-b-2 border-blue-100 pb-3 mb-6">演題募集のご案内</h3>
+                <p class="mb-8 text-slate-700 leading-relaxed">
+                    一般演題を公募いたします。多数の皆様からのご出題、ご参加を心よりお待ちしております。<br>
+                    <span class="text-sm text-slate-500 font-medium">（※指定演者の先生方も、こちらからご登録をお願いいたします。）</span>
+                </p>
+
+                <!-- 募集期間ハイライト（目立つようにバナー化） -->
+                <div class="bg-gradient-to-br from-white to-blue-50 border-2 border-blue-200 p-6 md:p-8 rounded-2xl shadow-md mb-8 flex flex-col md:flex-row items-center justify-between transform transition hover:-translate-y-1 hover:shadow-lg">
+                    <div class="w-full">
+                        <h4 class="font-bold text-blue-800 mb-3 flex items-center text-lg">
+                            <i class="far fa-calendar-alt text-blue-600 mr-2 text-2xl"></i>募集期間
+                        </h4>
+                        <p class="text-2xl md:text-3xl font-extrabold text-slate-800 tracking-tight mb-4">
+                            2026年<span class="text-blue-700 mx-1">8</span>月<span class="text-blue-700 mx-1">1</span>日<span class="text-lg font-bold text-slate-600 mx-1">(土)</span> <span class="text-slate-400 mx-2">～</span> <span class="text-red-600 mx-1">11</span>月<span class="text-red-600 mx-1">30</span>日<span class="text-lg font-bold text-slate-600 mx-1">(月)</span> <span class="text-xl text-red-600">正午まで</span>
+                        </p>
+                        <p class="text-red-600 text-sm md:text-base font-bold bg-red-50 inline-block px-4 py-2 rounded-full border border-red-200 shadow-sm">
+                            <i class="fas fa-exclamation-circle mr-1"></i>一般演題枠が埋まり次第、早期に締め切る可能性がございます。あらかじめご了承ください。
+                        </p>
+                    </div>
+                    <div class="hidden md:flex flex-shrink-0 ml-6 bg-white p-5 rounded-full shadow-inner border border-blue-50">
+                        <i class="fas fa-hourglass-half text-5xl text-blue-400 animate-pulse"></i>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 募集概要 -->
+                    <div class="bg-white/80 p-6 rounded-xl border border-slate-200 shadow-sm backdrop-blur-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 mb-4 flex items-center">
+                            <i class="fas fa-user-md text-blue-600 mr-2"></i>応募要件・形式
+                        </h4>
+                        <ul class="text-sm text-slate-700 space-y-4">
+                            <li class="flex flex-col">
+                                <strong class="text-slate-900 border-b border-slate-100 pb-1 mb-2">応募資格</strong>
+                                <span>臨床工学技士</span>
+                            </li>
+                            <li class="flex flex-col">
+                                <strong class="text-slate-900 border-b border-slate-100 pb-1 mb-2">発表形式</strong>
+                                <span>すべて口演となります（ポスター発表はございません）。</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 登録・採否について -->
+                    <div class="bg-white/80 p-6 rounded-xl border border-slate-200 shadow-sm backdrop-blur-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 mb-4 flex items-center">
+                            <i class="fas fa-info-circle text-blue-600 mr-2"></i>採否および注意事項
+                        </h4>
+                        <ul class="text-sm text-slate-700 space-y-3 guideline-list list-disc list-inside">
+                            <li>演題の採否・発表日時は当番世話人にご一任ください。</li>
+                            <li>決定後、ご登録いただいた「投稿者メールアドレス」宛に採否通知をお送りいたします。</li>
+                            <li>投稿された抄録は、原則として校正されず、そのまま抄録集に掲載する予定です。演題名・抄録本文、共著者名について十分にご確認ください。</li>
+                            <li class="text-red-500 font-medium">登録締切後（11月30日正午以降）は、原則として抄録の変更、共著者の追加・変更はお受けできません。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 border-t border-slate-200 pt-6">
+                    <h4 class="font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-edit text-blue-600 mr-2"></i>抄録作成のルール・文字数制限
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm text-slate-700 bg-slate-50/50 p-5 rounded-xl border border-slate-100">
+                        <ul class="list-disc list-outside ml-5 space-y-3">
+                            <li>本文の構成に指定はありませんが、迷われた場合は<span class="font-bold text-blue-800 bg-blue-100 px-1 rounded">【目的】【方法】【結果】【結論】</span>の順に区分してご入力ください。</li>
+                            <li><strong class="text-red-500 border-b border-red-200">図表の使用は不可</strong>とします。</li>
+                            <li>特殊文字（ISO8859-1）、発音記号、歯式は使用できません。</li>
+                        </ul>
+                        <ul class="list-disc list-outside ml-5 space-y-3">
+                            <li><strong>演題名:</strong> 全角70文字以内</li>
+                            <li><strong>抄録本文:</strong> 全角800文字以内</li>
+                            <li><strong>総文字数:</strong> <span class="font-bold text-blue-800">全角1,200文字以内</span><br><span class="text-xs text-slate-500">（筆頭演者、共同演者、所属機関名、演題名、抄録本文の合計）</span></li>
+                            <li><strong>登録制限:</strong> 最大所属機関数 20施設 / 最大演者数 20名</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <h3 style="text-align: center; color: #333; margin-bottom: 20px; font-size: 1.4rem;">演題募集のご案内</h3>
-            <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; color: #555; margin: 0;">
-                一般演題登録は <strong>2026年8月1日</strong> からの開始を予定しております。<br><br>
-                演題登録および抄録の提出方法などの詳細につきましては、<br>
-                準備が整い次第こちらのページでご案内いたします。<br>
-                公開まで今しばらくお待ちください。
-            </p>
+        </div>
+
+        <form id="registrationForm" class="glass-panel rounded-2xl p-8 md:p-12 mb-12">
+            
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-200">
+                <h3 class="text-2xl font-bold text-slate-800">新規演題登録フォーム</h3>
+                <span id="saveStatus" class="text-xs font-bold px-3 py-1.5 bg-green-100 text-green-700 rounded-full transition-opacity duration-300 opacity-0 flex items-center shadow-sm">
+                    <i class="fas fa-check mr-1"></i>一時保存済
+                </span>
+            </div>
+
+            <!-- システムエラー表示用エリア -->
+            <div id="systemErrorAlert" class="hidden mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm flex items-start">
+                <i class="fas fa-exclamation-triangle mt-1 mr-2"></i>
+                <span id="systemErrorMessage">エラーが発生しました。</span>
+            </div>
+
+            <div class="space-y-8">
+                <!-- 投稿者メールアドレス -->
+                <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                    <label for="email" class="block text-sm font-bold text-slate-700 mb-2">投稿者メールアドレス <span class="text-red-500">*</span></label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white transition-all shadow-sm"
+                        placeholder="example@nagai-hp.or.jp">
+                    <p class="text-xs text-slate-500 mt-2">
+                        <i class="fas fa-info-circle mr-1"></i>採否通知等の重要な連絡先となり、登録完了後に控えのメールが自動送信されます。
+                    </p>
+                </div>
+
+                <!-- 筆頭演者氏名 -->
+                <div>
+                    <label for="name" class="block text-sm font-bold text-slate-700 mb-2">筆頭演者氏名 <span class="text-red-500">*</span></label>
+                    <input type="text" id="name" name="name" required
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white transition-all shadow-sm"
+                        placeholder="例：松阪 太郎">
+                </div>
+
+                <!-- 筆頭演者氏名（ふりがな）★追加 -->
+                <div>
+                    <label for="nameKana" class="block text-sm font-bold text-slate-700 mb-2">ふりがな <span class="text-red-500">*</span></label>
+                    <input type="text" id="nameKana" name="nameKana" required
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white transition-all shadow-sm"
+                        placeholder="例：まつさか たろう">
+                </div>
+
+                <!-- 共同演者・所属機関 -->
+                <div>
+                    <label for="coAuthors" class="block text-sm font-bold text-slate-700 mb-2">所属機関・共同演者</label>
+                    <textarea id="coAuthors" name="coAuthors" rows="3"
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white transition-all shadow-sm resize-y"
+                        placeholder="1. 〇〇病院 臨床工学部&#13;&#10;松阪太郎(1)、佐藤花子(1)"></textarea>
+                    <p class="text-xs text-slate-500 mt-2">※最大所属機関数: 20施設、最大演者数: 20名まで</p>
+                </div>
+
+                <!-- 演題名 -->
+                <div>
+                    <label for="title" class="flex justify-between items-end mb-2">
+                        <span class="block text-sm font-bold text-slate-700">演題名 <span class="text-red-500">*</span></span>
+                        <span class="text-xs font-mono font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded"><span id="titleCount">0</span> / 70文字</span>
+                    </label>
+                    <input type="text" id="title" name="title" required maxlength="70"
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white transition-all shadow-sm font-medium"
+                        placeholder="演題名をご入力ください">
+                </div>
+
+                <!-- 抄録本文 -->
+                <div>
+                    <label for="abstract" class="flex justify-between items-end mb-2">
+                        <span class="block text-sm font-bold text-slate-700">抄録本文 <span class="text-red-500">*</span></span>
+                        <span class="text-xs font-mono font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded"><span id="abstractCount">0</span> / 800文字</span>
+                    </label>
+                    <textarea id="abstract" name="abstract" required rows="12" maxlength="800"
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white transition-all shadow-sm leading-relaxed"
+                        placeholder="【目的】&#13;&#10;【方法】&#13;&#10;【結果】&#13;&#10;【結論】"></textarea>
+                    <p class="text-xs text-slate-500 mt-2">※ブラウザを誤って閉じても入力内容は自動保存されます。</p>
+                </div>
+
+                <!-- 送信ボタン -->
+                <div class="pt-6 mt-8 border-t border-slate-200 text-center">
+                    <button type="submit" id="submitBtn"
+                        class="w-full md:w-2/3 mx-auto py-4 bg-[#0056b3] hover:bg-[#004494] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex justify-center items-center group">
+                        <span id="btnText">演題を登録する</span>
+                        <i id="loadingSpinner" class="fas fa-spinner fa-spin ml-3 hidden"></i>
+                        <i id="arrowIcon" class="fas fa-paper-plane ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    <p id="errorMessage" class="text-red-500 text-sm mt-3 hidden"></p>
+                </div>
+            </div>
+        </form>
+
+        <div id="successScreen" class="hidden glass-panel rounded-2xl p-10 md:p-16 text-center mt-4 mb-12">
+            <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+                <i class="fas fa-check text-4xl text-green-500"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4 tracking-tight">演題登録が完了しました</h3>
+            <p class="text-slate-600 mb-8 text-sm md:text-base">ご登録いただいたメールアドレス宛に控えを送信しました。<br>未着の場合は迷惑メールフォルダ等もご確認ください。</p>
+            
+            <div class="bg-gradient-to-br from-blue-50 to-slate-50 border border-blue-100 rounded-2xl p-8 inline-block mb-10 shadow-sm w-full max-w-md">
+                <p class="text-sm text-slate-500 font-bold mb-2 uppercase tracking-widest">あなたの演題番号</p>
+                <p id="displayNumber" class="text-5xl font-extrabold text-[#0056b3] tracking-wider">O-XXX</p>
+            </div>
+            
+            <div class="text-sm text-slate-600 bg-slate-50 p-6 rounded-lg border border-slate-200 inline-block text-left max-w-2xl w-full">
+                <h5 class="font-bold mb-3 border-b pb-2"><i class="fas fa-exclamation-circle mr-2 text-blue-500"></i>今後の流れについて</h5>
+                <ul class="list-disc list-outside ml-5 space-y-2">
+                    <li>演題の採否・発表日時につきましては、後日当番世話人よりご連絡いたします。</li>
+                    <li>登録期間中（11月30日正午まで）に修正が必要な場合は、再度このページから正しい内容でご登録ください。（最新の登録データを正とします）</li>
+                </ul>
+            </div>
         </div>
     </main>
 
@@ -74,5 +282,151 @@
     <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
     <script src="js/main.js"></script>
 
+    <script>
+        // ユーザーから提供されたGASのURL
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyUEdJpclaGsLtwQvvUHwTQbcepBXip4XtCvaTAH8imGE4xGGgE1jxIFeKSrGwv4drz/exec"; 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('registrationForm');
+            const inputs = form.querySelectorAll('input, textarea');
+            const saveStatus = document.getElementById('saveStatus');
+            const titleInput = document.getElementById('title');
+            const abstractInput = document.getElementById('abstract');
+            const sysErrorAlert = document.getElementById('systemErrorAlert');
+            const sysErrorMsg = document.getElementById('systemErrorMessage');
+            
+            // 1. LocalStorageを利用した自動保存機能
+            const savedData = JSON.parse(localStorage.getItem('orCetAbstractData')) || {};
+            inputs.forEach(input => {
+                if (savedData[input.name]) {
+                    input.value = savedData[input.name];
+                }
+            });
+            updateCounters();
+
+            // 入力時にデータを保存
+            let timeoutId;
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    const currentData = {};
+                    inputs.forEach(inp => currentData[inp.name] = inp.value);
+                    localStorage.setItem('orCetAbstractData', JSON.stringify(currentData));
+                    
+                    clearTimeout(timeoutId);
+                    saveStatus.classList.remove('opacity-0');
+                    timeoutId = setTimeout(() => {
+                        saveStatus.classList.add('opacity-0');
+                    }, 2000);
+                });
+            });
+
+            // 2. 文字数リアルタイムカウント
+            function updateCounters() {
+                const tCount = titleInput.value.length;
+                const aCount = abstractInput.value.length;
+                
+                document.getElementById('titleCount').textContent = tCount;
+                document.getElementById('abstractCount').textContent = aCount;
+                
+                if (tCount > 70) {
+                    document.getElementById('titleCount').parentElement.classList.add('text-red-600', 'bg-red-100');
+                } else {
+                    document.getElementById('titleCount').parentElement.classList.remove('text-red-600', 'bg-red-100');
+                }
+
+                if (aCount > 800) {
+                    document.getElementById('abstractCount').parentElement.classList.add('text-red-600', 'bg-red-100');
+                } else {
+                    document.getElementById('abstractCount').parentElement.classList.remove('text-red-600', 'bg-red-100');
+                }
+            }
+
+            titleInput.addEventListener('input', updateCounters);
+            abstractInput.addEventListener('input', updateCounters);
+
+            // 3. フォーム送信処理 (GASへのPOST)
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                sysErrorAlert.classList.add('hidden');
+                
+                // UI要素の取得（※ここで全て定義します）
+                const btn = document.getElementById('submitBtn');
+                const btnText = document.getElementById('btnText');
+                const spinner = document.getElementById('loadingSpinner');
+                const arrowIcon = document.getElementById('arrowIcon');
+                const errorMsg = document.getElementById('errorMessage');
+
+                // 送信中のボタンUIに変更
+                btn.disabled = true;
+                btn.classList.add('opacity-75', 'cursor-not-allowed');
+                btnText.textContent = "送信処理中...";
+                spinner.classList.remove('hidden');
+                arrowIcon.classList.add('hidden');
+                errorMsg.classList.add('hidden');
+
+                // FormDataを作成
+                const formData = new URLSearchParams(new FormData(form));
+
+                try {
+                    // APIにリクエスト送信
+                    const response = await fetch(GAS_WEB_APP_URL, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        }
+                    });
+
+                    // まずテキストとしてレスポンスを受け取る（エラー時のHTMLをパースエラーにしないため）
+                    const responseText = await response.text();
+                    
+                    let result;
+                    try {
+                        result = JSON.parse(responseText);
+                    } catch (parseError) {
+                        console.error("サーバーからの予期せぬ応答:", responseText);
+                        // GASの権限設定が間違っていると、Googleのログイン画面(HTML)が返ってくるためここで検知できます
+                        throw new Error("GASへのアクセス権限がありません。GASのデプロイ設定で「アクセスできるユーザー」が「全員」になっているか確認してください。");
+                    }
+
+                    if (!response.ok) {
+                        throw new Error("ネットワークエラーが発生しました。");
+                    }
+
+                    if (result.status === 'success') {
+                        // 成功時: フォームと案内を隠して完了画面を表示
+                        form.classList.add('hidden');
+                        
+                        document.getElementById('successScreen').classList.remove('hidden');
+                        document.getElementById('displayNumber').textContent = result.number; 
+                        
+                        // 画面上部へスクロール
+                        window.scrollTo({top: 0, behavior: 'smooth'});
+                        
+                        // 送信完了したので一時保存データをクリア
+                        localStorage.removeItem('orCetAbstractData');
+                    } else {
+                        throw new Error(result.message || "サーバー側で送信処理に失敗しました。");
+                    }
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    // 画面上に具体的なエラー理由を表示します
+                    errorMsg.textContent = "通信エラー: " + error.message;
+                    if (error.message === "Failed to fetch") {
+                        errorMsg.textContent = "通信エラー: GASのURLが間違っているか、CORSエラー（デプロイ設定の問題）が発生しています。";
+                    }
+                    errorMsg.classList.remove('hidden');
+                    
+                    // エラー時はボタンを元に戻す
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    btnText.textContent = "演題を登録する";
+                    spinner.classList.add('hidden');
+                    arrowIcon.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

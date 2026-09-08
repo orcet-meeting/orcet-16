@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>関連セミナーのご案内 | 第16回 手術室臨床工学技士 OR-CET情報交換会</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- ドット絵風フォント DotGothic16 を追加 -->
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- RPG風カスタムCSS（style.cssの下に記述して上書き） -->
+    <style>
+        /* 変数定義（ドラクエカラー） */
+        :root {
+            --rpg-bg: #000000;      /* 背景色（黒） */
+            --rpg-text: #ffffff;    /* 文字色（白） */
+            --rpg-border: #ffffff;  /* 枠線色（白） */
+            --rpg-command: #ffea00; /* コマンド・強調色（黄） */
+            --rpg-font: 'DotGothic16', sans-serif; /* ドット絵フォント */
+        }
+
+        /* 全体設定 */
+        body {
+            background-color: var(--rpg-bg);
+            color: var(--rpg-text);
+            font-family: var(--rpg-font);
+            font-size: 1.2rem; /* 少し大きめに */
+            line-height: 1.8;
+            margin: 0;
+            -webkit-font-smoothing: none; /* ドットをくっきりさせる */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ヘッダー（メッセージウィンドウ風） */
+        header {
+            background-color: var(--rpg-bg);
+            border: 4px solid var(--rpg-border);
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* タイトルロゴ（テキスト） */
+        .logo-area a {
+            color: var(--rpg-text);
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-shadow: 2px 2px 0 #000; /* 文字に影をつけて立体感を */
+        }
+
+        /* ナビゲーション（コマンド選択風） */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--rpg-text);
+            text-decoration: none;
+            position: relative;
+            padding-left: 25px; /* 矢印スペース */
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        /* ホバー時に黄色になり、矢印を表示 */
+        .nav-links a:hover {
+            color: var(--rpg-command);
+        }
+
+        .nav-links a::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            color: var(--rpg-command);
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+
+        /* 参加登録（特別なコマンド風） */
+        .nav-links .btn-register {
+            border: 2px solid var(--rpg-border);
+            padding: 5px 15px 5px 35px;
+            border-radius: 4px;
+        }
+
+        /* メインコンテンツ */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ページタイトル（メッセージウィンドウ風） */
+        .section-title {
+            text-align: center;
+            color: var(--rpg-text);
+            margin-bottom: 40px;
+            display: inline-block;
+            border: 4px solid var(--rpg-border);
+            padding: 15px 40px;
+            border-radius: 8px;
+            background-color: var(--rpg-bg);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* セミナーカード（メインメッセージウィンドウ） */
+        .seminar-card {
+            background-color: var(--rpg-bg);
+            border: 4px solid var(--rpg-border);
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+            padding: 50px 40px;
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        .seminar-header {
+            margin-bottom: 40px;
+        }
+
+        .seminar-title {
+            color: var(--rpg-text);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .seminar-subtitle {
+            font-size: 1.6rem;
+            color: var(--rpg-text);
+            font-weight: 700;
+        }
+
+        .seminar-desc {
+            color: var(--rpg-text);
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+        }
+
+        /* ポスター（白枠で囲む） */
+        .poster-wrapper {
+            border: 4px solid var(--rpg-border);
+            border-radius: 8px;
+            box-shadow: none;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .poster-wrapper:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+        }
+
+        .poster-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ホバー時のレイヤー（ドラクエ風に濃く） */
+        .poster-hover-layer {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* onerror時のプレースホルダーテキストをRPG風に */
+        img.poster-img[src=""] {
+            content: url('https://via.placeholder.com/700x990/000000/ffffff?text=ポスターをみる▶');
+        }
+
+        /* ボタン（コマンド選択風） */
+        .btn-primary {
+            background-color: var(--rpg-bg);
+            color: var(--rpg-text);
+            border: 4px solid var(--rpg-border);
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 20px 50px 20px 70px; /* 矢印スペース */
+            transition: color 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+
+        /* ホバー時に黄色になり、矢印を表示 */
+        .btn-primary:hover {
+            background-color: var(--rpg-bg);
+            color: var(--rpg-command);
+            border-color: var(--rpg-command);
+        }
+
+        .btn-primary::before {
+            content: '▶';
+            position: absolute;
+            left: 30px;
+            opacity: 0;
+            color: var(--rpg-command);
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary i {
+            margin-right: 10px;
+            color: inherit; /* 親の文字色を継承 */
+        }
+
+        /* アラートメッセージ（ウィンドウ風） */
+        .alert-message {
+            background-color: var(--rpg-bg);
+            border: 4px solid var(--rpg-border);
+            color: var(--rpg-text);
+            border-radius: 8px;
+            font-size: 1.3rem;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .alert-message i {
+            color: var(--rpg-text);
+        }
+
+        /* フッター（メッセージウィンドウ風） */
+        .site-footer {
+            background-color: var(--rpg-bg);
+            border: 4px solid var(--rpg-border);
+            border-radius: 8px;
+            color: var(--rpg-text);
+            margin: 20px 10px 10px;
+            padding: 40px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-info a {
+            color: var(--rpg-text);
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            text-align: right;
+        }
+
+        .sns-icons a {
+            color: var(--rpg-text);
+            font-size: 2.2rem;
+            transition: color 0.2s ease;
+        }
+
+        .sns-icons a:hover {
+            color: var(--rpg-command);
+        }
+
+        /* 関連リンク（コマンド風） */
+        .site-footer .related-link {
+            border: 2px solid var(--rpg-border);
+            color: var(--rpg-text);
+            padding: 5px 15px 5px 30px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .site-footer .related-link:hover {
+            color: var(--rpg-command);
+        }
+
+        .site-footer .related-link::before {
+            content: '▶';
+            position: absolute;
+            left: 10px;
+            opacity: 0;
+            color: var(--rpg-command);
+        }
+
+        .site-footer .related-link:hover::before {
+            opacity: 1;
+        }
+
+        .footer-copyright {
+            border-top: 2px solid rgba(255, 255, 255, 0.4);
+            margin-top: 30px;
+            padding-top: 20px;
+        }
+
+        /* ページトップボタン（ウィンドウ風） */
+        .page-top {
+            background-color: var(--rpg-bg);
+            border: 2px solid var(--rpg-border);
+            color: var(--rpg-text);
+            border-radius: 4px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .page-top:hover {
+            color: var(--rpg-command);
+            border-color: var(--rpg-command);
+        }
+
+        /* レスポンシブ調整（RPG風を維持） */
+        @media (max-width: 768px) {
+            body {
+                font-size: 1.1rem;
+            }
+            header, footer {
+                margin: 5px;
+            }
+            .header-container, .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .logo-area a {
+                font-size: 1.6rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                padding-left: 0;
+                padding-top: 15px; /* 上に矢印スペース */
+            }
+            .nav-links a::before {
+                left: calc(50% - 10px);
+                top: -10px;
+            }
+            .seminar-card {
+                padding: 30px 15px;
+            }
+            .seminar-title {
+                font-size: 1.5rem;
+            }
+            .seminar-subtitle {
+                font-size: 1.2rem;
+            }
+            .btn-primary {
+                font-size: 1.2rem;
+                padding: 15px 30px 15px 50px;
+            }
+            .btn-primary::before {
+                left: 20px;
+            }
+            .footer-links {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <!-- RPGタイトルロゴ風テキスト -->
+                <a href="index.html">OR-CETクエスト XVI</a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">ぼうけんのしょ</a></li> <!-- 開催概要 -->
+                    <li><a href="greeting.html">お告げ</a></li> <!-- ご挨拶 -->
+                    <li><a href="sankasya-annai.html">まちのひと</a></li> <!-- 参加者案内 -->
+                    <li><a href="program.html">じゅもん・とくぎ</a></li> <!-- プログラム -->
+                    <li><a href="guidelines.html">ゆうしゃの心得</a></li> <!-- 座長・発表者へ -->
+                    <li><a href="abstract-submission.html">ちからを認める</a></li> <!-- 演題登録 -->
+                    <li><a href="venue.html">ダンジョン</a></li> <!-- 会場・周辺 -->
+                    <li><a href="registration.html" class="btn-register">パーティーに加わる</a></li> <!-- 参加登録 -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- メッセージウィンドウ風タイトル -->
+        <h2 class="section-title">とくべつなセミナーのしらせ</h2>
+        
+        <!-- メインメッセージウィンドウ -->
+        <section class="seminar-card">
+            <div class="seminar-header">
+                <h3 class="seminar-title">みえけん臨床工学技士会<br>だい4かい 手術室関連セミナー</h3>
+                <p class="seminar-subtitle">消化器外科CE・スキルアップデート<br>〜あしたからの手術室を変えるさいてきかい〜</p>
+            </div>
+
+            <p class="seminar-desc">
+                このセミナーは2026ねん8がつ30にちにLiveはいしんされたセミナーの<strong>オンデマンドばん</strong>です。<br>
+                当日ご視聴いただけなかった方も、改めて学び直したい方も、ぜひこの機会にご参加ください。
+            </p>
+
+            <!-- ポスター画像リンク（白枠ウィンドウ） -->
+            <a href="https://miece-4thope.peatix.com/" target="_blank" rel="noopener noreferrer" class="poster-wrapper">
+                <img src="images/flyer_rmieope4th.jpg" alt="第4回 手術室関連セミナー ポスター" class="poster-img" onerror="this.src='https://via.placeholder.com/700x990/000000/ffffff?text=ポスターをみる▶'">
+                <div class="poster-hover-layer">
+                </div>
+            </a>
+
+            <div>
+                <!-- コマンド選択ボタン -->
+                <a href="https://miece-4thope.peatix.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <i class="fas fa-external-link-alt"></i> オンデマンドはいしんをみる▶
+                </a>
+            </div>
+
+            <!-- メッセージウィンドウ -->
+            <div class="alert-message">
+                <i class="fas fa-check-circle"></i> OR-CETなゆうしゃは要チェックです！
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p><strong>しゅさい :</strong> 手術室臨床工学技士 OR-CETクエスト</p>
+                <p><strong>こうえん :</strong> 日本臨床工学技士会 / 三重県臨床工学技士会 / 三重県</p>                
+                <p><strong>じむきょく :</strong> 永井病院 臨床工学室</p>
+                <p><strong>うんえい :</strong> 刈谷豊田総合病院 臨床工学科</p>
+                <p><a href="contact.html">おといあわせ</a></p>
+            </div>
+            <div class="footer-links">
+                <div class="sns-icons">
+                    <a href="https://line.me/R/ti/p/@359yfnlu" target="_blank" class="sns-icon line" title="LINE"><i class="fab fa-line"></i></a>
+                    <a href="https://www.instagram.com/orcet_jyouhou?igsh=NG1iZGs3eHVpaXp5" target="_blank" class="sns-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1Dc1HNvj1V/?mibextid=wwXIfr" target="_blank" class="sns-icon fb-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <!-- コマンドリンク -->
+                <a href="links.html" class="related-link">かんれんリンク</a>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <small>Copyright &copy; 2027 The 16th OR-CET Quest. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <a href="#" id="page-top" class="page-top"><i class="fas fa-chevron-up"></i></a>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

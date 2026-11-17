@@ -12,6 +12,22 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+        /* === スマホ横揺れ（水平スクロール）完全防止 === */
+        html, body {
+            overflow-x: hidden; /* 横方向のはみ出しを強制的に隠して揺れを防ぐ */
+            width: 100%;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box; /* 余白（padding）を含めて100%に収める */
+        }
+        /* 長いURLやテキストが画面外にはみ出さないように強制改行 */
+        .whats-new-flat .text, .cool-dl dd {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+        }
+        /* ======================================= */
+        
         /* What's New フラットデザイン（スクロール窓化） */
         .whats-new-flat { 
             list-style: none; padding: 0; margin: 0; background: #fff; 

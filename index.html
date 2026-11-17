@@ -12,8 +12,13 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* What's New フラットデザイン */
-        .whats-new-flat { list-style: none; padding: 0; margin: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); overflow: hidden; }
+        /* What's New フラットデザイン（スクロール窓化） */
+        .whats-new-flat { 
+            list-style: none; padding: 0; margin: 0; background: #fff; 
+            border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
+            max-height: 400px; /* スクロール窓の高さ（約4記事分） */
+            overflow-y: auto; 
+        }
         .whats-new-flat li { display: flex; align-items: flex-start; padding: 15px 20px; border-bottom: 1px dashed #e2e8f0; margin: 0 !important; height: auto !important; min-height: 0 !important; transition: background-color 0.3s; }
         .whats-new-flat li:hover { background-color: #f8fafc; }
         .whats-new-flat li:last-child { border-bottom: none; }
@@ -22,11 +27,35 @@
         .whats-new-flat .text a { color: var(--accent-color); font-weight: 700; text-decoration: underline; transition: 0.3s; }
         .whats-new-flat .text a:hover { color: #c0392b; text-decoration: none; }
         
+        /* スクロールバーの装飾 */
+        .whats-new-flat::-webkit-scrollbar { width: 8px; }
+        .whats-new-flat::-webkit-scrollbar-track { background: #f8fafc; border-radius: 0 8px 8px 0; border-left: 1px solid #e2e8f0; }
+        .whats-new-flat::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .whats-new-flat::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
         @media (max-width: 576px) {
             .whats-new-flat li { flex-direction: column; padding: 12px 15px !important; }
             .whats-new-flat .date { margin-bottom: 4px !important; font-size: 0.9rem; }
             .whats-new-flat .text { font-size: 0.95rem; line-height: 1.5; }
         }
+
+        /* 開催概要 ＆ ポスターレイアウト */
+        .overview-wrapper { display: flex; gap: 30px; align-items: stretch; margin-top: 20px; }
+        .overview-info { flex: 1.5; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 35px; border-top: 5px solid #2c3e50; }
+        .cool-dl { display: grid; grid-template-columns: 120px 1fr; gap: 20px 15px; margin: 0; }
+        .cool-dl dt { font-weight: 700; color: #2c3e50; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; display: flex; align-items: center; }
+        .cool-dl dt i { margin-right: 10px; color: #3498db; width: 16px; text-align: center; }
+        .cool-dl dd { margin: 0; padding-bottom: 20px; border-bottom: 1px dashed #e2e8f0; line-height: 1.7; color: #444; }
+        .cool-dl dt:last-of-type, .cool-dl dd:last-of-type { border-bottom: none; padding-bottom: 0; }
+        
+        .overview-poster { flex: 1; display: flex; flex-direction: column; }
+        .poster-card { display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; background: #fff; padding: 25px 20px; height: 100%; box-sizing: border-box; }
+        .poster-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-color: #3498db; }
+        .poster-card-title { font-weight: 700; color: #333; margin-bottom: 15px; font-size: 1.1rem; }
+        .poster-card img { width: 100%; max-width: 250px; height: auto; border: 1px solid #f1f5f9; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .btn-pdf { display: inline-flex; align-items: center; justify-content: center; background: #e74c3c; color: #fff; padding: 12px 25px; border-radius: 50px; font-weight: bold; transition: background 0.3s; width: 100%; max-width: 250px; }
+        .btn-pdf:hover { background: #c0392b; color: #fff; }
+        .btn-pdf i { margin-right: 8px; font-size: 1.2rem; }
 
         /* 協賛企業バナーグリッド */
         .banner-container-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
@@ -37,8 +66,18 @@
         .banner-link-card.placeholder { border: 2px dashed #cbd5e1; background: #f8fafc; color: #94a3b8; font-weight: normal; padding: 10px; }
         .banner-link-card.placeholder:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.05); border-color: var(--primary-color); color: var(--primary-color); }
 
-        @media (max-width: 992px) { .banner-container-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } }
-        @media (max-width: 576px) { .banner-container-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .banner-link-card { font-size: 0.75rem; } }
+        @media (max-width: 992px) {
+            .banner-container-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .overview-wrapper { flex-direction: column; }
+            .overview-poster { margin-top: 20px; }
+        }
+        @media (max-width: 576px) { 
+            .banner-container-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } 
+            .banner-link-card { font-size: 0.75rem; } 
+            .cool-dl { grid-template-columns: 1fr; gap: 8px; }
+            .cool-dl dd { padding-bottom: 15px; }
+            .overview-info { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -71,7 +110,6 @@
         <section class="whats-new container">
             <h2 class="section-title">What's New</h2>
             <ul class="whats-new-flat">
-                <!-- 新規追加：11月18日のエントリー -->
                 <li>
                     <span class="date">2026.11.18</span>
                     <span class="text">
@@ -127,25 +165,40 @@
             </ul>
         </section>
 
-        <section class="overview container">
+        <section class="overview container" style="margin-top: 60px;">
             <h2 class="section-title">開催概要</h2>
-            <div class="info-table">
-                <dl>
-                    <dt>名称</dt>
-                    <dd>第16回 手術室臨床工学技士 OR-CET情報交換会</dd>
-                    
-                    <dt>テーマ</dt>
-                    <dd>手術室と地域をつなぐOR-CET<br>～地域医療を支える周術期マネジメントと臨床工学技士〜</dd>
+            <div class="overview-wrapper">
+                <!-- 左側：開催概要テキスト -->
+                <div class="overview-info">
+                    <dl class="cool-dl">
+                        <dt><i class="fas fa-tag"></i> 名称</dt>
+                        <dd>第16回 手術室臨床工学技士 OR-CET情報交換会</dd>
+                        
+                        <dt><i class="fas fa-lightbulb"></i> テーマ</dt>
+                        <dd><strong>手術室と地域をつなぐOR-CET</strong><br>～地域医療を支える周術期マネジメントと臨床工学技士〜</dd>
 
-                    <dt>大会長<br><span style="font-size: 0.85em; font-weight: normal;">（当番幹事）</span></dt>
-                    <dd>山口 翔（医療法人 永井病院 臨床工学室）</dd>
-                    
-                    <dt>会期</dt>
-                    <dd>2027年2月14日(<span>日</span>)</dd>
-                    
-                    <dt>会場</dt>
-                    <dd>松阪市産業振興センター（詳細は<a href="venue.html" style="text-decoration: underline; font-weight: bold;">会場・周辺案内</a>をご覧ください）</dd>
-                </dl>
+                        <dt><i class="fas fa-user-md"></i> 大会長<br><span style="font-size: 0.75em; font-weight: normal; color:#666; margin-left: 26px;">（当番幹事）</span></dt>
+                        <dd>山口 翔 <span style="font-size: 0.9em; color: #666;">（医療法人 永井病院 臨床工学室）</span></dd>
+                        
+                        <dt><i class="far fa-calendar-alt"></i> 会期</dt>
+                        <dd><strong>2027年2月14日(<span>日</span>)</strong></dd>
+                        
+                        <dt><i class="fas fa-map-marker-alt"></i> 会場</dt>
+                        <dd>
+                            <strong>松阪市産業振興センター</strong><br>
+                            <span style="font-size: 0.9em;">（詳細は<a href="venue.html" style="text-decoration: underline; font-weight: bold; color: #3498db;">会場・周辺案内</a>をご覧ください）</span>
+                        </dd>
+                    </dl>
+                </div>
+                
+                <!-- 右側：ポスターPDFリンク -->
+                <div class="overview-poster">
+                    <a href="pdf/poster.pdf" target="_blank" class="poster-card">
+                        <div class="poster-card-title">大会告知ポスター</div>
+                        <img src="images/poster_thumb.jpg" alt="第16回 OR-CET情報交換会 ポスター">
+                        <div class="btn-pdf"><i class="fas fa-file-pdf"></i> PDFを見る</div>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -153,7 +206,6 @@
             <h2 class="section-title">協賛企業</h2>
             <div class="banner-container-grid">
                 
-                <!-- 新規追加：アイ・エム・アイ -->
                 <a href="exhibition.html#sponsor-imi" class="banner-link-card">
                     <img src="images/sponsor_imi.png" alt="アイ・エム・アイ株式会社">   
                 </a>
@@ -194,7 +246,6 @@
                     <img src="images/sponsor_olympus.png" alt="オリンパスマーケティング株式会社">
                 </a>
 
-                <!-- 新規追加：科研製薬 -->
                 <a href="exhibition.html#sponsor-kaken" class="banner-link-card">
                     <img src="images/sponsor_kaken.png" alt="科研製薬株式会社">   
                 </a>
@@ -276,7 +327,7 @@
                 </a>
 
                 <a href="exhibition.html#sponsor-nittokohki" class="banner-link-card">
-                    <img src="images/sponsor_nitto.png" alt="日東工器株式会社">   
+                    <img src="images/sponsor_nittokohki.png" alt="日東工器株式会社">   
                 </a>
 
                 <a href="exhibition.html#sponsor-nipro" class="banner-link-card">
@@ -356,6 +407,25 @@
                 <a href="exhibition.html" class="btn-register" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px; background: #e74c3c;">
                     <i class="fas fa-door-open"></i> Web展示ブースを見る
                 </a>
+            </div>
+        </section>
+
+        <section class="supporter container" style="margin-top: 60px; margin-bottom: 80px;">
+            <h2 class="section-title">後援</h2>
+            <div class="banner-container-grid">
+                
+                <a href="https://ja-ces.or.jp/" target="_blank" class="banner-link-card">
+                    <img src="images/kouen_jaces.png" alt="公益社団法人 日本臨床工学技士会">
+                </a>
+
+                <a href="https://miece.jp/wp/" target="_blank" class="banner-link-card">
+                    <img src="images/kouen_mieces.png" alt="一般社団法人 共益型三重県臨床工学技士会">   
+                </a>
+
+                <a href="https://www.pref.mie.lg.jp/" target="_blank" class="banner-link-card">
+                   <img src="images/kouen_mieken.png" alt="三重県">  
+                </a>
+                
             </div>
         </section>
     </main>

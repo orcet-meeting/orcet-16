@@ -9,6 +9,246 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* =========================================
+           プログラム用タイムラインCSS 
+           (後でstyle.cssに移動推奨)
+        ========================================= */
+        .notice-box {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            border-left: 5px solid #6c757d;
+            padding: 15px 20px;
+            margin-bottom: 40px;
+            border-radius: 0 8px 8px 0;
+            color: #555;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 3px;
+            background: #e9ecef;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 45px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #1a5b82;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(26, 91, 130, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            background: #1a5b82;
+            transform: scale(1.2);
+        }
+
+        .timeline-time {
+            display: inline-block;
+            font-weight: 800;
+            color: #1a5b82;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            background: #f8f9fa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .timeline-content {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .badge-opening { background: #6c757d; }
+        .badge-seminar { background: #1a5b82; }
+        .badge-general { background: #28a745; }
+        .badge-luncheon { background: #e67e22; }
+        .badge-exhibition { background: #9b59b6; }
+        .badge-special { background: #d9534f; }
+        
+        .timeline-item.break::before {
+            border-color: #adb5bd;
+        }
+        .timeline-item.break .timeline-time {
+            color: #6c757d;
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+        }
+        .timeline-item.break .timeline-content {
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            padding: 5px 0 15px 0;
+            color: #6c757d;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .special-title {
+            color: #d9534f;
+            font-size: 1.4rem;
+        }
+
+        /* --- ポスター画像用スタイル --- */
+        .session-poster {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .poster-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- 登壇者情報のレイアウト（修正版） --- */
+        .speakers-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #1a5b82;
+        }
+        .speakers-box.special-box {
+            border-left-color: #d9534f;
+            background: #fdf5f5;
+        }
+        
+        .speaker-row {
+            margin-bottom: 10px;
+            display: flex;        /* フレックスボックスで横並びに */
+            align-items: baseline; /* テキストの下端を揃える */
+        }
+        .speaker-row:last-child {
+            margin-bottom: 0;
+        }
+        .speaker-row.divider {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ccc;
+        }
+
+        .speaker-role {
+            font-weight: 700;
+            color: #555;
+            white-space: nowrap; /* 不自然な改行を防ぐ */
+            margin-right: 10px;  /* 右側の余白 */
+            flex-shrink: 0;      /* 幅が潰れるのを防ぐ */
+        }
+        
+        .speaker-info {
+            display: flex;
+            flex-wrap: wrap;     /* 所属が長い場合は折り返す */
+            align-items: baseline;
+        }
+
+        .speaker-name {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 700;
+            white-space: nowrap; /* 氏名での改行を防ぐ */
+        }
+        .speaker-affil {
+            font-size: 0.85rem;
+            color: #666;
+            margin-left: 8px;
+        }
+
+        .coming-soon-text {
+            font-style: italic;
+            color: #999;
+        }
+        .and-more {
+            font-style: italic;
+            font-weight: 800;
+            color: #d9534f;
+            margin-top: 10px;
+            text-align: right;
+            font-size: 1.1rem;
+        }
+
+        /* --- スマホ表示用調整 --- */
+        @media (max-width: 768px) {
+            .timeline { padding-left: 15px; }
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 35px; }
+            .timeline-item::before { left: -9px; width: 14px; height: 14px; border-width: 3px; }
+            .session-title { font-size: 1.15rem; }
+            
+            /* スマホでは縦並びに変更して見やすく */
+            .speaker-row {
+                flex-direction: column;
+            }
+            .speaker-role {
+                margin-bottom: 4px;
+            }
+            .speaker-info {
+                flex-direction: column;
+            }
+            .speaker-affil {
+                margin-left: 0;
+                margin-top: 2px;
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -34,11 +274,238 @@
 
     <main class="container">
         <h2 class="section-title">プログラム</h2>
-        <div class="coming-soon">
-            <i class="fas fa-tools" style="font-size: 3rem; color: #ccc; margin-bottom: 20px;"></i>
-            <h3>現在準備中です</h3>
-            <p style="color: #666; margin-top: 10px;">コンテンツの公開まで今しばらくお待ちください。</p>
+        
+        <div class="notice-box">
+            <i class="fas fa-info-circle" style="color: #1a5b82; margin-right: 5px;"></i>
+            ※掲載している演題名やタイムスケジュールは現在調整中のため（仮）となっており、今後予告なく変更となる可能性がございます。あらかじめご了承ください。
         </div>
+
+        <div class="timeline">
+            
+            <!-- 開会挨拶 -->
+            <div class="timeline-item">
+                <div class="timeline-time">10:00</div>
+                <div class="timeline-content">
+                    <span class="badge badge-opening"><i class="fas fa-flag"></i> 開会挨拶</span>
+                    <div class="speakers-box">
+                        <div class="speaker-row">
+                            <span class="speaker-role">開会挨拶：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">山口 翔</span>
+                                <span class="speaker-affil">（医療法人 永井病院 臨床工学室 管理主任/手術室運営管理者）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 協賛セミナー① -->
+            <div class="timeline-item">
+                <div class="timeline-time">10:05 - 10:35</div>
+                <div class="timeline-content">
+                    <span class="badge badge-seminar"><i class="fas fa-handshake"></i> 協賛セミナー①： ASP Japan合同会社</span>
+                    <h3 class="session-title">滅菌管理における臨床工学技士の新たな役割（仮）</h3>
+                    
+                    <!-- ▼ ポスター画像枠（画像ができたら下のコメントアウトを外してファイル名を変更） ▼ -->
+                    <!--
+                    <div class="session-poster">
+                        <img src="images/poster_seminar1.jpg" alt="協賛セミナー1 ポスター" class="poster-img">
+                    </div>
+                    -->
+
+                    <div class="speakers-box">
+                        <div class="speaker-row">
+                            <span class="speaker-role">座長：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">蜂須賀 章友</span>
+                                <span class="speaker-affil">（日本赤十字社愛知医療センター 名古屋第一病院 臨床工学技術課）</span>
+                            </div>
+                        </div>
+                        <div class="speaker-row">
+                            <span class="speaker-role">演者：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">神 貴子</span>
+                                <span class="speaker-affil">（ASP Japan合同会社 マーケティング部 感染制御学博士/看護師）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 一般演題① -->
+            <div class="timeline-item">
+                <div class="timeline-time">10:35 - 11:10</div>
+                <div class="timeline-content">
+                    <span class="badge badge-general"><i class="fas fa-chalkboard-teacher"></i> 一般演題①</span>
+                    <h3 class="session-title" style="color: #ccc;">（演題調整中）</h3>
+                </div>
+            </div>
+
+            <!-- 休憩 -->
+            <div class="timeline-item break">
+                <div class="timeline-time">11:10 - 11:20</div>
+                <div class="timeline-content">
+                    <i class="fas fa-coffee"></i> 休憩（軽食引き換え）
+                </div>
+            </div>
+
+            <!-- ランチョンセミナー -->
+            <div class="timeline-item">
+                <div class="timeline-time">11:20 - 12:00</div>
+                <div class="timeline-content">
+                    <span class="badge badge-luncheon"><i class="fas fa-utensils"></i> ランチョンセミナー：テルモ株式会社</span>
+                    <h3 class="session-title">麻酔（仮）</h3>
+
+                    <!-- ▼ ポスター画像枠 ▼ -->
+                    <!--
+                    <div class="session-poster">
+                        <img src="images/poster_luncheon.jpg" alt="ランチョンセミナー ポスター" class="poster-img">
+                    </div>
+                    -->
+
+                    <div class="speakers-box" style="border-left-color: #e67e22;">
+                        <div class="speaker-row">
+                            <span class="speaker-role">座長：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">北本 憲永</span>
+                                <span class="speaker-affil">（藤田医科大学病院 臨床工学部 副部長）</span>
+                            </div>
+                        </div>
+                        <div class="speaker-row">
+                            <span class="speaker-role">演者：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">中村 智之</span>
+                                <span class="speaker-affil">（藤田医科大学病院 麻酔科・ペインクリニック 教授）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- メーカー展示 -->
+            <div class="timeline-item">
+                <div class="timeline-time">12:00 - 12:30</div>
+                <div class="timeline-content">
+                    <span class="badge badge-exhibition"><i class="fas fa-box-open"></i> 展示</span>
+                    <h3 class="session-title">【メーカー展示をご覧ください】</h3>
+                </div>
+            </div>
+
+            <!-- 協賛セミナー② -->
+            <div class="timeline-item">
+                <div class="timeline-time">12:30 - 13:00</div>
+                <div class="timeline-content">
+                    <span class="badge badge-seminar"><i class="fas fa-handshake"></i> 協賛セミナー②：フクダ電子株式会社</span>
+                    <h3 class="session-title">周術期における医療安全（仮）</h3>
+
+                    <!-- ▼ ポスター画像枠 ▼ -->
+                    <!--
+                    <div class="session-poster">
+                        <img src="images/poster_seminar2.jpg" alt="協賛セミナー2 ポスター" class="poster-img">
+                    </div>
+                    -->
+
+                    <div class="speakers-box">
+                        <div class="speaker-row">
+                            <span class="speaker-role">座長：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">北村 拡</span>
+                                <span class="speaker-affil">（日本赤十字社 伊勢赤十字病院 臨床工学課 課長）</span>
+                            </div>
+                        </div>
+                        <div class="speaker-row">
+                            <span class="speaker-role">演者：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">鈴木 雄也</span>
+                                <span class="speaker-affil">（近江八幡市立医療センター 臨床工学科 副主幹）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 一般演題② -->
+            <div class="timeline-item">
+                <div class="timeline-time">13:00 - 13:35</div>
+                <div class="timeline-content">
+                    <span class="badge badge-general"><i class="fas fa-chalkboard-teacher"></i> 一般演題②</span>
+                    <h3 class="session-title" style="color: #ccc;">（演題調整中）</h3>
+                </div>
+            </div>
+
+            <!-- 休憩 -->
+            <div class="timeline-item break">
+                <div class="timeline-time">13:35 - 13:45</div>
+                <div class="timeline-content">
+                    <i class="fas fa-coffee"></i> 休憩
+                </div>
+            </div>
+
+            <!-- 大激論企画 -->
+            <div class="timeline-item">
+                <div class="timeline-time">13:45 - 15:00</div>
+                <div class="timeline-content" style="border: 2px solid #ffdfdf;">
+                    <span class="badge badge-special"><i class="fas fa-fire"></i> 特別企画</span>
+                    <h3 class="session-title special-title">ここだけの話！みんなでOR-CET大激論<br>〜スマホで参加する、NGなしのぶっちゃけ祭〜</h3>
+
+                    <!-- ▼ ポスター画像枠 ▼ -->
+                    <!--
+                    <div class="session-poster">
+                        <img src="images/poster_special.jpg" alt="特別企画 ポスター" class="poster-img">
+                    </div>
+                    -->
+
+                    <div class="speakers-box special-box">
+                        <div class="speaker-row">
+                            <span class="speaker-role">ファシリテーター：</span>
+                            <div class="speaker-info">
+                                <span class="coming-soon-text">coming soon...</span>
+                            </div>
+                        </div>
+                        <div class="speaker-row">
+                            <span class="speaker-role">コメンテーター：</span>
+                            <div class="speaker-info">
+                                <span class="coming-soon-text">coming soon...</span>
+                            </div>
+                        </div>
+                        <div class="and-more">…and more!!!!!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 閉会挨拶 & 次回大会長 -->
+            <div class="timeline-item">
+                <div class="timeline-time">15:00</div>
+                <div class="timeline-content">
+                    <span class="badge badge-opening"><i class="fas fa-flag-checkered"></i> 閉会挨拶・引継ぎ</span>
+                    <div class="speakers-box">
+                        <div class="speaker-row">
+                            <span class="speaker-role">閉会挨拶：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">藤田 智一</span>
+                                <span class="speaker-affil">（医療法人豊田会 刈谷豊田総合病院 臨床工学科 副部長）</span>
+                            </div>
+                        </div>
+                        <div class="speaker-row divider">
+                            <span class="speaker-role">次回大会長挨拶：</span>
+                            <div class="speaker-info">
+                                <span class="speaker-name">野澤 隆志</span>
+                                <span class="speaker-affil">（杏林大学医学部付属病院 臨床工学室 主任）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 終了 -->
+            <div class="timeline-item break">
+                <div class="timeline-time">15:30</div>
+                <div class="timeline-content">
+                    <i class="fas fa-door-closed"></i> 全プログラム終了
+                </div>
+            </div>
+
+        </div> <!-- /.timeline -->
     </main>
 
     <footer class="site-footer">

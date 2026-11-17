@@ -27,7 +27,7 @@
             word-break: break-word;
         }
         /* ======================================= */
-        
+
         /* What's New フラットデザイン（スクロール窓化） */
         .whats-new-flat { 
             list-style: none; padding: 0; margin: 0; background: #fff; 
@@ -94,6 +94,28 @@
             .cool-dl dd { padding-bottom: 15px; }
             .overview-info { padding: 20px; }
         }
+
+        /* === 後援セクション・フッターのはみ出し完全防止 === */
+        /* フッターの長いテキストを画面端で強制的に折り返す */
+        .footer-info p {
+            overflow-wrap: break-word;
+            word-break: auto-phrase;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 576px) {
+            /* フッターの文字サイズをスマホ向けに微調整 */
+            .footer-info p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            /* 後援バナー（3社）をスマホでは1列（縦並び）にしてはみ出しを防ぐ */
+            .supporter .banner-container-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+        /* ======================================= */
     </style>
 </head>
 <body>
